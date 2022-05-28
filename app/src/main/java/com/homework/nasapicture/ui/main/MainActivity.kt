@@ -1,8 +1,8 @@
-package com.homework.nasapicture
+package com.homework.nasapicture.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.homework.nasapicture.ui.main.MainFragment
+import com.homework.nasapicture.R
 
 class MainActivity : AppCompatActivity() {
 

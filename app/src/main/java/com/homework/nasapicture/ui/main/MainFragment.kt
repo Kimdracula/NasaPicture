@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.homework.nasapicture.R
+import com.homework.nasapicture.viewmodel.MainViewModel
 
 class MainFragment : Fragment() {
 

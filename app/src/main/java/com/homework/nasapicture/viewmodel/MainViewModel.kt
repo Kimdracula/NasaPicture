@@ -1,4 +1,4 @@
-package com.homework.nasapicture.ui.main
+package com.homework.nasapicture.viewmodel
 
 import androidx.lifecycle.ViewModel
 
