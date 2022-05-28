@@ -1,15 +1,21 @@
 package com.homework.nasapicture.ui.main
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.homework.nasapicture.R
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import coil.load
+import com.homework.nasapicture.databinding.FragmentMainBinding
+import com.homework.nasapicture.viewmodel.MainState
 import com.homework.nasapicture.viewmodel.MainViewModel
 
 class MainFragment : Fragment() {
+
+    private var _binding: FragmentMainBinding? = null
+    private val binding get() = _binding!!
 
     companion object {
         fun newInstance() = MainFragment()
@@ -21,13 +27,34 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_main, container, false)
+        _binding = FragmentMainBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+        viewModel.getLiveData().observe(viewLifecycleOwner, Observer {
+            renderData(it)
+        })
+        viewModel.getPictures()
     }
 
+    private fun renderData(it: MainState?) {
+        when (it) {
+            is MainState.Loading -> {}
+            is MainState.Error -> {}
+            is MainState.Success -> {
+                binding.nasaPictureImageView.load(it.pictureOfTheDay.url)
+            }
+
+            else -> {}
+        }
+    }
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }

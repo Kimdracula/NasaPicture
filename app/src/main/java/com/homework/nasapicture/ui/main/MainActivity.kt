@@ -1,7 +1,7 @@
 package com.homework.nasapicture.ui.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.homework.nasapicture.R
 
 class MainActivity : AppCompatActivity() {
@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.container, MainFragment.newInstance())
-                .commitNow()
+                .commitNowAllowingStateLoss()
         }
     }
 }
