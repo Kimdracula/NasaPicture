@@ -42,7 +42,5 @@ class MainViewModel(
         override fun onFailure(call: Call<NasaDTO>, t: Throwable) {
             liveData.postValue(MainState.Error(Throwable(SERVER_ERROR)))
         }
-
     }
-
 }

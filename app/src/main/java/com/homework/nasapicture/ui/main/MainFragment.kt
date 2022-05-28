@@ -42,16 +42,16 @@ class MainFragment : Fragment() {
 
     private fun renderData(it: MainState?) {
         when (it) {
-            is MainState.Loading -> {}
+            is MainState.Loading -> {binding.progressIndicator.visibility = View.VISIBLE}
             is MainState.Error -> {}
             is MainState.Success -> {
+                binding.progressIndicator.visibility = View.GONE
                 binding.nasaPictureImageView.load(it.pictureOfTheDay.url)
             }
 
             else -> {}
         }
     }
-
 
     override fun onDestroy() {
         super.onDestroy()
