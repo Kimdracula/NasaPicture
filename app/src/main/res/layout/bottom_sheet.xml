@@ -8,8 +8,7 @@
     android:background="#f6f6fa"
     app:behavior_hideable="true"
     app:behavior_peekHeight="50dp"
-    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior
-">
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
     <View
         android:id="@+id/bottom_sheet_line"
@@ -30,7 +29,6 @@
         android:paddingEnd="10dp"
         android:textColor="#000"
         android:textStyle="bold"
-        android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_line"
