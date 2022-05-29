@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">NasaPicture</string>
+    <string name="search_in_wiki">Искать в Википедии</string>
 </resources>

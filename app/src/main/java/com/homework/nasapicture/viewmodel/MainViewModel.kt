@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.homework.nasapicture.BuildConfig
 import com.homework.nasapicture.model.NasaDTO
 import com.homework.nasapicture.model.Retrofit
+import com.homework.nasapicture.utils.API_KEY_ERROR
 import com.homework.nasapicture.utils.SERVER_ERROR
 import retrofit2.Call
 import retrofit2.Callback
@@ -22,7 +23,9 @@ class MainViewModel(
 
     fun getPictures() {
         liveData.postValue(MainState.Loading)
-        if (BuildConfig.NASA_API_KEY != null) {
+        if (BuildConfig.NASA_API_KEY.isNullOrBlank()) {
+            liveData.postValue(MainState.Error(Throwable(API_KEY_ERROR)))
+        } else {
             pictureOfTheDayRetrofit.getRetrofit().getNasaPicture(BuildConfig.NASA_API_KEY)
                 .enqueue(callback)
         }
