@@ -6,10 +6,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import coil.load
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.homework.nasapicture.databinding.FragmentMainBinding
 import com.homework.nasapicture.utils.UNKNOWN_ERROR
 import com.homework.nasapicture.utils.WIKI_URL
@@ -20,6 +22,9 @@ class MainFragment : Fragment() {
 
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
+
 
     companion object {
         fun newInstance() = MainFragment()
@@ -42,9 +47,15 @@ class MainFragment : Fragment() {
             renderData(it)
         })
         viewModel.getPictures()
-
+        setBottomSheetBehavior(binding.includeBottomSheet.bottomSheetContainer)
         setInputLayoutIconClickAction()
     }
+
+    private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {
+        bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+    }
+
 
     private fun setInputLayoutIconClickAction() {
         binding.inputLayout.setEndIconOnClickListener {
@@ -63,9 +74,13 @@ class MainFragment : Fragment() {
             }
             is MainState.Error -> {}
             is MainState.Success -> {
-                with(binding){
-                progressIndicator.visibility = View.GONE
-                nasaPictureImageView.load(it.pictureOfTheDay.url)}
+                with(binding) {
+                    progressIndicator.visibility = View.GONE
+                    nasaPictureImageView.load(it.pictureOfTheDay.url)
+                    includeBottomSheet.bottomSheetDescriptionHeader.text = it.pictureOfTheDay.title
+                    includeBottomSheet.bottomSheetDescription.text = it.pictureOfTheDay.explanation
+
+                }
             }
 
             else -> {
