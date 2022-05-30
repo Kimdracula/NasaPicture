@@ -3,4 +3,8 @@
     <string name="search_in_wiki">Искать в Википедии</string>
     <string name="favourite" translatable="false">favourite</string>
     <string name="settings" translatable="false">settings</string>
+    <string name="search" translatable="false">Search</string>
+    <string name="today">Today</string>
+    <string name="tdby" translatable="false">TDBY</string>
+    <string name="yesterday">Yesterday</string>
 </resources>

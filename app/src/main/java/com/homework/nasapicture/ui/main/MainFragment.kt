@@ -6,10 +6,12 @@ import android.os.Bundle
 import android.view.*
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import coil.load
+import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.homework.nasapicture.R
 import com.homework.nasapicture.databinding.FragmentMainBinding
@@ -28,6 +30,7 @@ class MainFragment : Fragment() {
 
     companion object {
         fun newInstance() = MainFragment()
+        private var isMain = true
     }
 
     private lateinit var viewModel: MainViewModel
@@ -113,6 +116,21 @@ class MainFragment : Fragment() {
         val context = activity as MainActivity
         context.setSupportActionBar(view.findViewById(R.id.bottom_app_bar))
         setHasOptionsMenu(true)
+
+        binding.fab.setOnClickListener {
+            if(isMain){
+                binding.bottomAppBar.navigationIcon = null
+                binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
+                binding.fab.setImageDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.ic_back_fab))
+                // TODO HW  binding.bottomAppBar.replaceMenu(// R.menu. какое-то другое меню)
+            }else{
+                binding.bottomAppBar.navigationIcon = (ContextCompat.getDrawable(requireContext(),R.drawable.hamburger_icon))
+                binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
+                binding.fab.setImageDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.plus_fab_icon))
+                // TODO HW binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar)
+            }
+            isMain = !isMain
+        }
     }
 
 
