@@ -3,10 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Acer/AndroidStudioProjects/NasaPicture/app/src/main/res/drawable/favourite_icon.xml" value="0.107" />
+        <entry key="..\:/Users/Acer/AndroidStudioProjects/NasaPicture/app/src/main/res/drawable/hamburger_icon.xml" value="0.19" />
+        <entry key="..\:/Users/Acer/AndroidStudioProjects/NasaPicture/app/src/main/res/drawable/my_ripple.xml" value="0.107" />
+        <entry key="..\:/Users/Acer/AndroidStudioProjects/NasaPicture/app/src/main/res/drawable/plus_fab_icon.xml" value="0.1885" />
+        <entry key="..\:/Users/Acer/AndroidStudioProjects/NasaPicture/app/src/main/res/drawable/settings_icon.xml" value="0.107" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/NasaPicture/app/src/main/res/drawable/wiki.xml" value="0.1" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/NasaPicture/app/src/main/res/layout/activity_main.xml" value="0.2078804347826087" />
+        <entry key="..\:/Users/Acer/AndroidStudioProjects/NasaPicture/app/src/main/res/layout/bottom_navigation.xml" value="0.2078804347826087" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/NasaPicture/app/src/main/res/layout/bottom_sheet.xml" value="0.1" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/NasaPicture/app/src/main/res/layout/fragment_main.xml" value="0.2" />
+        <entry key="..\:/Users/Acer/AndroidStudioProjects/NasaPicture/app/src/main/res/layout/navigation_drawer.xml" value="0.1" />
+        <entry key="..\:/Users/Acer/AndroidStudioProjects/NasaPicture/app/src/main/res/menu/menu_app_bar.xml" value="0.1" />
+        <entry key="..\:/Users/Acer/AndroidStudioProjects/NasaPicture/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.253125" />
       </map>
     </option>
   </component>

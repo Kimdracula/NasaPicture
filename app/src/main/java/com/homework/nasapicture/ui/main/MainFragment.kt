@@ -3,16 +3,15 @@ package com.homework.nasapicture.ui.main
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.homework.nasapicture.R
 import com.homework.nasapicture.databinding.FragmentMainBinding
 import com.homework.nasapicture.utils.UNKNOWN_ERROR
 import com.homework.nasapicture.utils.WIKI_URL
@@ -47,6 +46,7 @@ class MainFragment : Fragment() {
         viewModel.getLiveData().observe(viewLifecycleOwner, Observer {
             renderData(it)
         })
+        setBottomAppBar(view)
         viewModel.getPictures()
         setBottomSheetBehavior(binding.includeBottomSheet.bottomSheetContainer)
         setInputLayoutIconClickAction()
@@ -55,25 +55,6 @@ class MainFragment : Fragment() {
     private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
-
-        bottomSheetBehavior.addBottomSheetCallback(object :
-            BottomSheetBehavior.BottomSheetCallback() {
-            override fun onStateChanged(bottomSheet: View, newState: Int) {
-                when (newState) {
-                    BottomSheetBehavior.STATE_DRAGGING -> {}
-                    BottomSheetBehavior.STATE_COLLAPSED -> {}
-                    BottomSheetBehavior.STATE_EXPANDED -> {}
-                    BottomSheetBehavior.STATE_HALF_EXPANDED -> {}
-                    BottomSheetBehavior.STATE_HIDDEN -> {}
-                    BottomSheetBehavior.STATE_SETTLING -> {}
-                }
-            }
-
-            override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                Log.d("@@@", "$slideOffset")
-            }
-
-        })
     }
 
 
@@ -108,6 +89,32 @@ class MainFragment : Fragment() {
             }
         }
     }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu_app_bar, menu)
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.app_bar_fav -> Toast.makeText(context, "Favourite",
+                Toast.LENGTH_SHORT).show()
+            R.id.app_bar_search -> Toast.makeText(context, "Search",
+                Toast.LENGTH_SHORT).show()
+            android.R.id.home -> {
+                BottomNavigationDrawerFragment.newInstance()
+                    .show(requireActivity().supportFragmentManager, "")
+
+        }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun setBottomAppBar(view: View) {
+        val context = activity as MainActivity
+        context.setSupportActionBar(view.findViewById(R.id.bottom_app_bar))
+        setHasOptionsMenu(true)
+    }
+
 
     override fun onDestroy() {
         super.onDestroy()
