@@ -19,6 +19,8 @@ import com.homework.nasapicture.utils.UNKNOWN_ERROR
 import com.homework.nasapicture.utils.WIKI_URL
 import com.homework.nasapicture.viewmodel.MainState
 import com.homework.nasapicture.viewmodel.MainViewModel
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class MainFragment : Fragment() {
 
@@ -26,6 +28,11 @@ class MainFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
+
+
+    val current = LocalDateTime.now()
+    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+    val formattedNow = current.format(formatter)
 
 
     companion object {
@@ -50,9 +57,27 @@ class MainFragment : Fragment() {
             renderData(it)
         })
         setBottomAppBar(view)
-        viewModel.getPictures()
+        viewModel.sendRequest(formattedNow)
         setBottomSheetBehavior(binding.includeBottomSheet.bottomSheetContainer)
         setInputLayoutIconClickAction()
+        setChipBehavior()
+    }
+
+    private fun setChipBehavior() {
+
+       val yesterday = current.minusDays(1)
+        val dby = current.minusDays(2)
+        val formattedYesterday = yesterday.format(formatter)
+        val formattedDby = dby.format(formatter)
+
+
+        binding.chipGroup.setOnCheckedChangeListener { _, position ->
+            when(position){
+                1->{viewModel.sendRequest(formattedNow)}
+                2->{viewModel.sendRequest(formattedYesterday)}
+              3->{viewModel.sendRequest(formattedDby)}
+            }
+        }
     }
 
     private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {

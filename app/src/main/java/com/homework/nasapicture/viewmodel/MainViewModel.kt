@@ -21,12 +21,12 @@ class MainViewModel(
         return liveData
     }
 
-    fun getPictures() {
+    fun sendRequest(date: String) {
         liveData.postValue(MainState.Loading)
         if (BuildConfig.NASA_API_KEY.isNullOrBlank()) {
             liveData.postValue(MainState.Error(Throwable(API_KEY_ERROR)))
         } else {
-            pictureOfTheDayRetrofit.getRetrofit().getNasaPicture(BuildConfig.NASA_API_KEY)
+            pictureOfTheDayRetrofit.getRetrofit().getNasaPicture(BuildConfig.NASA_API_KEY, date)
                 .enqueue(callback)
         }
     }

@@ -8,7 +8,5 @@ import retrofit2.http.Query
 
 interface PictureApi {
     @GET(END_POINT)
-    fun getNasaPicture(
-        @Query(API_HEADER) apikey: String
-    ): Call<NasaDTO>
+    fun getNasaPicture(@Query(API_HEADER) apikey: String, @Query("date") date:String): Call<NasaDTO>
 }
