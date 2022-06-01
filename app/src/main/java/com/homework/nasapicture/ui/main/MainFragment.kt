@@ -133,7 +133,7 @@ class MainFragment : Fragment() {
                 context, "Favourite",
                 Toast.LENGTH_SHORT
             ).show()
-            R.id.app_bar_search -> Toast.makeText(
+            R.id.app_bar_settings -> Toast.makeText(
                 context, "Search",
                 Toast.LENGTH_SHORT
             ).show()
@@ -155,24 +155,24 @@ class MainFragment : Fragment() {
             if (isMain) {
                 binding.bottomAppBar.navigationIcon = null
                 binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
+                binding.bottomAppBar.replaceMenu(R.menu.menu_app_bar_secondary)
                 binding.fab.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(),
                         R.drawable.ic_back_fab
                     )
                 )
-                // TODO HW  binding.bottomAppBar.replaceMenu(// R.menu. какое-то другое меню)
             } else {
                 binding.bottomAppBar.navigationIcon =
                     (ContextCompat.getDrawable(requireContext(), R.drawable.hamburger_icon))
                 binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
+                binding.bottomAppBar.replaceMenu(R.menu.menu_app_bar)
                 binding.fab.setImageDrawable(
                     ContextCompat.getDrawable(
                         requireContext(),
                         R.drawable.plus_fab_icon
                     )
                 )
-                // TODO HW binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar)
             }
             isMain = !isMain
         }
