@@ -3,8 +3,6 @@ package com.homework.nasapicture.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.viewbinding.BuildConfig
-import com.homework.nasapicture.BuildConfig
 import com.homework.nasapicture.model.NasaDTO
 import com.homework.nasapicture.model.Retrofit
 import com.homework.nasapicture.utils.API_KEY_ERROR
@@ -24,10 +22,10 @@ class MainViewModel(
 
     fun sendRequest(date: String) {
         liveData.postValue(MainState.Loading)
-        if (BuildConfig.NASA_API_KEY.isNullOrBlank()) {
+        if (com.homework.nasapicture.BuildConfig.NASA_API_KEY.isNullOrBlank()) {
             liveData.postValue(MainState.Error(Throwable(API_KEY_ERROR)))
         } else {
-            pictureOfTheDayRetrofit.getRetrofit().getNasaPicture(BuildConfig.NASA_API_KEY, date)
+            pictureOfTheDayRetrofit.getRetrofit().getNasaPicture(com.homework.nasapicture.BuildConfig.NASA_API_KEY, date)
                 .enqueue(callback)
         }
     }
