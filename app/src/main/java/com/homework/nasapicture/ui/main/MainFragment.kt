@@ -8,7 +8,6 @@ import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.google.android.material.bottomappbar.BottomAppBar
@@ -30,9 +29,9 @@ class MainFragment : Fragment() {
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
 
 
-    val current = LocalDateTime.now()
-    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
-    val formattedNow = current.format(formatter)
+    private val current: LocalDateTime = LocalDateTime.now()
+    private val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+    private val formattedNow = current.format(formatter)
 
 
     companion object {
@@ -53,9 +52,9 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
-        viewModel.getLiveData().observe(viewLifecycleOwner, Observer {
+        viewModel.getLiveData().observe(viewLifecycleOwner) {
             renderData(it)
-        })
+        }
         setBottomAppBar(view)
         viewModel.sendRequest(formattedNow)
         setBottomSheetBehavior(binding.includeBottomSheet.bottomSheetContainer)
@@ -65,17 +64,23 @@ class MainFragment : Fragment() {
 
     private fun setChipBehavior() {
 
-       val yesterday = current.minusDays(1)
+        val yesterday = current.minusDays(1)
         val dby = current.minusDays(2)
         val formattedYesterday = yesterday.format(formatter)
         val formattedDby = dby.format(formatter)
 
 
         binding.chipGroup.setOnCheckedChangeListener { _, position ->
-            when(position){
-                1->{viewModel.sendRequest(formattedNow)}
-                2->{viewModel.sendRequest(formattedYesterday)}
-              3->{viewModel.sendRequest(formattedDby)}
+            when (position) {
+                1 -> {
+                    viewModel.sendRequest(formattedNow)
+                }
+                2 -> {
+                    viewModel.sendRequest(formattedYesterday)
+                }
+                3 -> {
+                    viewModel.sendRequest(formattedDby)
+                }
             }
         }
     }
@@ -108,7 +113,6 @@ class MainFragment : Fragment() {
                     nasaPictureImageView.load(it.pictureOfTheDay.url)
                     includeBottomSheet.bottomSheetDescriptionHeader.text = it.pictureOfTheDay.title
                     includeBottomSheet.bottomSheetDescription.text = it.pictureOfTheDay.explanation
-
                 }
             }
 
@@ -122,17 +126,22 @@ class MainFragment : Fragment() {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.menu_app_bar, menu)
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.app_bar_fav -> Toast.makeText(context, "Favourite",
-                Toast.LENGTH_SHORT).show()
-            R.id.app_bar_search -> Toast.makeText(context, "Search",
-                Toast.LENGTH_SHORT).show()
+            R.id.app_bar_fav -> Toast.makeText(
+                context, "Favourite",
+                Toast.LENGTH_SHORT
+            ).show()
+            R.id.app_bar_search -> Toast.makeText(
+                context, "Search",
+                Toast.LENGTH_SHORT
+            ).show()
             android.R.id.home -> {
                 BottomNavigationDrawerFragment.newInstance()
                     .show(requireActivity().supportFragmentManager, "")
 
-        }
+            }
         }
         return super.onOptionsItemSelected(item)
     }
@@ -143,15 +152,26 @@ class MainFragment : Fragment() {
         setHasOptionsMenu(true)
 
         binding.fab.setOnClickListener {
-            if(isMain){
+            if (isMain) {
                 binding.bottomAppBar.navigationIcon = null
                 binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
-                binding.fab.setImageDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.ic_back_fab))
+                binding.fab.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        R.drawable.ic_back_fab
+                    )
+                )
                 // TODO HW  binding.bottomAppBar.replaceMenu(// R.menu. какое-то другое меню)
-            }else{
-                binding.bottomAppBar.navigationIcon = (ContextCompat.getDrawable(requireContext(),R.drawable.hamburger_icon))
+            } else {
+                binding.bottomAppBar.navigationIcon =
+                    (ContextCompat.getDrawable(requireContext(), R.drawable.hamburger_icon))
                 binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
-                binding.fab.setImageDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.plus_fab_icon))
+                binding.fab.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        R.drawable.plus_fab_icon
+                    )
+                )
                 // TODO HW binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar)
             }
             isMain = !isMain

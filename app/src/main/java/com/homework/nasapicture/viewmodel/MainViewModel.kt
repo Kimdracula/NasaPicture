@@ -3,6 +3,7 @@ package com.homework.nasapicture.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.viewbinding.BuildConfig
 import com.homework.nasapicture.BuildConfig
 import com.homework.nasapicture.model.NasaDTO
 import com.homework.nasapicture.model.Retrofit
