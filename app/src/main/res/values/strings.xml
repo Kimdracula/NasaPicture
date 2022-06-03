@@ -4,7 +4,7 @@
     <string name="favourite" translatable="false">favourite</string>
     <string name="settings" translatable="false">settings</string>
     <string name="search" translatable="false">Search</string>
-    <string name="today">Today</string>
-    <string name="tdby" translatable="false">TDBY</string>
-    <string name="yesterday">Yesterday</string>
+    <string name="today">Сегодня</string>
+    <string name="tdby" translatable="false">Позавчера</string>
+    <string name="yesterday">Вчера</string>
 </resources>

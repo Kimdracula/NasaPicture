@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.tabs.TabLayout
 import com.homework.nasapicture.R
 import com.homework.nasapicture.databinding.FragmentMainBinding
 import com.homework.nasapicture.utils.UNKNOWN_ERROR
@@ -70,21 +71,29 @@ class MainFragment : Fragment() {
         val formattedDby = dby.format(formatter)
 
 
-        binding.chipGroup.setOnCheckedChangeListener { _, position ->
-            when (position) {
-                1 -> {
-                    viewModel.sendRequest(formattedNow)
-                }
-                2 -> {
-                    viewModel.sendRequest(formattedYesterday)
-                }
-                3 -> {
-                    viewModel.sendRequest(formattedDby)
-                }
-            }
-        }
-    }
+        binding.tabsGroup.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                when (tab?.position) {
+                    0 -> {
+                        viewModel.sendRequest(formattedNow)
+                    }
+                    1 -> {
+                        viewModel.sendRequest(formattedYesterday)
+                    }
+                    2 -> {
+                        viewModel.sendRequest(formattedDby)
+                    }
+            }}
 
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+            }
+        })
+
+
+    }
     private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
