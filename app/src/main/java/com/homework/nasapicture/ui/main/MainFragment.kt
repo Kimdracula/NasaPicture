@@ -104,12 +104,16 @@ class MainFragment : Fragment() {
     private fun renderData(it: MainState?) {
         when (it) {
             is MainState.Loading -> {
-                binding.progressIndicator.visibility = View.VISIBLE
+               binding.imageViewProgress.load(R.drawable.progress_animation)
             }
-            is MainState.Error -> {}
+            is MainState.Error -> {
+                with(binding) {
+                imageViewProgress.visibility = View.GONE
+                binding.nasaPictureImageView.load(R.drawable.error_image)}
+            }
             is MainState.Success -> {
                 with(binding) {
-                    progressIndicator.visibility = View.GONE
+                    imageViewProgress.visibility = View.GONE
                     nasaPictureImageView.load(it.pictureOfTheDay.url)
                     includeBottomSheet.bottomSheetDescriptionHeader.text = it.pictureOfTheDay.title
                     includeBottomSheet.bottomSheetDescription.text = it.pictureOfTheDay.explanation

@@ -58,26 +58,14 @@
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.progressindicator.LinearProgressIndicator
-        android:id="@+id/progressIndicator"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="180dp"
-        android:indeterminate="true"
-        android:visibility="gone"
-        app:indeterminateAnimationType="contiguous"
-        app:indicatorColor="@array/progress_colors"
-        app:layout_constraintBottom_toTopOf="@+id/nasaPictureImageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="visible" />
+
 
     <com.homework.nasapicture.utils.EquilateralImageView
         android:id="@+id/nasaPictureImageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
+        android:layout_gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -107,4 +95,12 @@
         layout="@layout/bottom_sheet">
 
     </include>
+
+    <ImageView
+        android:id="@+id/imageViewProgress"
+        android:layout_width="105dp"
+        android:layout_height="105dp"
+        app:layout_anchor="@+id/nasaPictureImageView"
+        app:layout_anchorGravity="center"
+        tools:src="@tools:sample/avatars" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
