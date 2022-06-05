@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="MyTabStyle" parent="Widget.MaterialComponents.TabLayout">
+        <item name="tabIndicatorAnimationDuration">1500</item>
+    </style>
+
+
+    <style name="AppShapeAppearance"
+        parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerSize">8dp</item>
+    </style>
+</resources>

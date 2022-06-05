@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.NasaPicture" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/gray</item>
+        <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/gray</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
@@ -26,7 +26,7 @@
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
-        <item name="themeColorPrimary">@color/yellow</item>
+        <item name="themeColorPrimary">@color/purple_200</item>
 
         <!-- Status bar color. -->
         <item name="android:statusBarColor" >@android:color/darker_gray</item>
@@ -35,32 +35,40 @@
     <style name="Theme.Green" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">?themeColorPrimary</item>
-        <item name="colorPrimaryVariant">@color/gray</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryVariant">@color/teal_700</item>
+        <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
-        <item name="themeColorPrimary">@color/yellow</item>
+        <item name="themeColorPrimary">@color/teal_700</item>
 
         <!-- Status bar color. -->
         <item name="android:statusBarColor" >@android:color/darker_gray</item>
+
+
     </style>
 
     <style name="Theme.Dark" parent="Theme.MaterialComponents.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">?themeColorPrimary</item>
         <item name="colorPrimaryVariant">@color/gray</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondary">@color/teal_700</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
-        <item name="themeColorPrimary">@color/coral</item>
-
+        <item name="themeColorPrimary">@color/material_dynamic_neutral60</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" >@android:color/darker_gray</item>
-
+        <item name="android:statusBarColor" >@color/black</item>
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item
+            name="shapeAppearanceMediumComponent">@style/AppShapeAppearance</item>
     </style>
+
+
+
+
 
 </resources>

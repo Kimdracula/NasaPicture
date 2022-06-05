@@ -9,8 +9,8 @@
         android:id="@+id/themeHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Выбор темы"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal"
+        android:text="Выбор темы" />
 
 
     <LinearLayout
