@@ -38,8 +38,11 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         when (mainActivity.getNewTheme()) {
-            R.style.Theme_Dark -> binding.switchDarkTheme.isChecked
+            R.style.Theme_Dark -> binding.switchDarkTheme.isChecked = true
+            R.style.Theme_Light -> binding.switchLightTheme.isChecked = true
+            R.style.Theme_Green -> binding.switchGreenTheme.isChecked = true
         }
+
         setTheme()
     }
 
@@ -48,25 +51,74 @@ class SettingsFragment : Fragment() {
         mainActivity = requireActivity() as MainActivity
     }
 
-
     private fun setTheme() {
         with(binding) {
-            switchDarkTheme.setOnClickListener {
-                mainActivity.setNewTheme(R.style.Theme_Dark)
 
+            switchDarkTheme.setOnCheckedChangeListener { _, checked ->
+                if (checked) {
+                    if (mainActivity.getNewTheme() != R.style.Theme_Dark) {
+                        mainActivity.setNewTheme(R.style.Theme_Dark)
+                    }
+                    disableLightAndGreenTheme()
+                } else {
+                    if (mainActivity.getNewTheme() != R.style.Theme_NasaPicture) {
+                        mainActivity.setNewTheme(R.style.Theme_NasaPicture)
+                    }
+                    disableLightAndGreenTheme()
+                }
             }
 
-            switchLightTheme.setOnClickListener {
-                mainActivity.setNewTheme(R.style.Theme_NasaPicture)
 
+            switchLightTheme.setOnCheckedChangeListener { _, checked ->
+                if (checked) {
+                    if (mainActivity.getNewTheme() != R.style.Theme_Light) {
+                        mainActivity.setNewTheme(R.style.Theme_Light)
+                    }
+                    disableDarkAndGreenTheme()
+                } else {
+                    if (mainActivity.getNewTheme() != R.style.Theme_NasaPicture) {
+                        mainActivity.setNewTheme(R.style.Theme_NasaPicture)
+                    }
+                    disableDarkAndGreenTheme()
+                }
             }
 
-            switchGreenTheme.setOnClickListener {
-                mainActivity.setNewTheme(R.style.Theme_NasaPicture)
 
+            switchGreenTheme.setOnCheckedChangeListener { _, checked ->
+                if (checked) {
+                    if (mainActivity.getNewTheme() != R.style.Theme_Green) {
+                        mainActivity.setNewTheme(R.style.Theme_Green)
+                    }
+                    disableLightAndDarkTheme()
+                } else {
+                    if (mainActivity.getNewTheme() != R.style.Theme_NasaPicture) {
+                        mainActivity.setNewTheme(R.style.Theme_NasaPicture)
+                    }
+                    disableLightAndDarkTheme()
+                }
             }
+
         }
     }
 
+    private fun disableLightAndDarkTheme() {
+        with(binding) {
+            switchLightTheme.isChecked = false
+            switchDarkTheme.isChecked = false
+        }
+    }
 
+    private fun disableDarkAndGreenTheme() {
+        with(binding) {
+            switchDarkTheme.isChecked = false
+            switchGreenTheme.isChecked = false
+        }
+    }
+
+    private fun disableLightAndGreenTheme() {
+        with(binding) {
+            switchLightTheme.isChecked = false
+            switchGreenTheme.isChecked = false
+        }
+    }
 }
