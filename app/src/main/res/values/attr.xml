@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <attr name="myBlueColor" format="reference"/>
+    <attr name="myGreenColor" format="reference"/>
+    <attr name="themeColorPrimary" format="reference"/>
 </resources>

@@ -15,6 +15,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.tabs.TabLayout
 import com.homework.nasapicture.R
 import com.homework.nasapicture.databinding.FragmentMainBinding
+import com.homework.nasapicture.ui.settings.SettingsFragment
 import com.homework.nasapicture.utils.UNKNOWN_ERROR
 import com.homework.nasapicture.utils.WIKI_URL
 import com.homework.nasapicture.viewmodel.MainState
@@ -146,10 +147,14 @@ class MainFragment : Fragment() {
                 context, "Favourite",
                 Toast.LENGTH_SHORT
             ).show()
-            R.id.app_bar_settings -> Toast.makeText(
-                context, "Search",
-                Toast.LENGTH_SHORT
-            ).show()
+            R.id.app_bar_settings ->
+                requireActivity().supportFragmentManager.beginTransaction()
+                    .replace(R.id.container, SettingsFragment.newInstance())
+                    .addToBackStack("")
+                    .commit()
+
+
+
             android.R.id.home -> {
                 BottomNavigationDrawerFragment.newInstance()
                     .show(requireActivity().supportFragmentManager, "")

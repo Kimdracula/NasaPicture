@@ -64,12 +64,18 @@
         android:id="@+id/nasaPictureImageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="100dp"
         android:layout_gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/includeBottomSheet"
+        layout="@layout/bottom_sheet">
+
+    </include>
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottom_app_bar"
@@ -90,11 +96,7 @@
         app:tint="#FFFFFF" />
 
 
-    <include
-        android:id="@+id/includeBottomSheet"
-        layout="@layout/bottom_sheet">
 
-    </include>
 
     <ImageView
         android:id="@+id/imageViewProgress"
