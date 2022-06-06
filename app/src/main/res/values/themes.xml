@@ -64,10 +64,12 @@
         <item name="fontFamily">@font/roboto_medium</item>
         <item name="android:fontFamily">@font/roboto_medium</item>
         <item
-            name="shapeAppearanceMediumComponent">@style/AppShapeAppearance</item>
+            name="shapeAppearanceMediumComponent">@style/AppShapeAppearance.MediumComponent</item>
+        <item
+            name="shapeAppearanceSmallComponent">@style/AppShapeAppearance.SmallComponent</item>
+        <item name="tabStyle">@style/MyTabStyle</item>
+
     </style>
-
-
 
 
 

@@ -93,7 +93,8 @@
         android:backgroundTint="?colorAccent"
         app:layout_anchor="@id/bottom_app_bar"
         app:srcCompat="@drawable/plus_fab_icon"
-        app:tint="#FFFFFF" />
+        app:tint="#FFFFFF"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 
 

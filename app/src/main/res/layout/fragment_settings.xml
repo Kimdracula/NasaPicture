@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Выбор темы" />
+        android:text="@string/seetings_header" />
 
 
     <LinearLayout
@@ -23,14 +23,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Тёмная тема" />
+        android:text="@string/dark_theme" />
 
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/switchDarkTheme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:layout_marginEnd="30dp"/>
+        android:layout_marginEnd="@dimen/margin_end_switch"/>
 
     </LinearLayout>
 
@@ -44,14 +44,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Светлая тема" />
+            android:text="@string/light_theme" />
 
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/switchLightTheme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginEnd="30dp"/>
+            android:layout_marginEnd="@dimen/margin_end_switch"/>
 
     </LinearLayout>
     <LinearLayout
@@ -64,14 +64,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Зелёная тема" />
+            android:text="@string/green_theme" />
 
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/switchGreenTheme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginEnd="30dp"/>
+            android:layout_marginEnd="@dimen/margin_end_switch"/>
 
     </LinearLayout>
 </LinearLayout>

@@ -2,11 +2,24 @@
 <resources>
     <style name="MyTabStyle" parent="Widget.MaterialComponents.TabLayout">
         <item name="tabIndicatorAnimationDuration">1500</item>
+        <item name="tabIndicatorColor">@color/teal_700</item>
     </style>
 
 
-    <style name="AppShapeAppearance"
+    <style name="AppShapeAppearance.MediumComponent"
         parent="ShapeAppearance.MaterialComponents.MediumComponent">
         <item name="cornerSize">8dp</item>
     </style>
+
+
+    <style name="AppShapeAppearance.SmallComponent"
+        parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerSize">12dp</item>
+    </style>
+
+    <style name="MyTextInputStyle"
+    parent="Widget.Material3.TextInputLayout.FilledBox">
+    <item name="colorContainer">@color/teal_700</item>
+</style>
+
 </resources>
