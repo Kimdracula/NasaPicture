@@ -11,7 +11,11 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" >@android:color/darker_gray</item>
-        <!-- Customize your theme here. -->
+        <item
+            name="android:forceDarkAllowed">false</item>
+
+
+    <!-- Customize your theme here. -->
         <item name="myBlueColor">@color/blue_material</item>
 
     </style>
@@ -45,6 +49,7 @@
 
         <!-- Status bar color. -->
         <item name="android:statusBarColor" >@android:color/darker_gray</item>
+        <item name="textInputStyle">@style/AppTextField</item>
 
 
     </style>

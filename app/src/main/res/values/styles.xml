@@ -22,4 +22,9 @@
     <item name="colorContainer">@color/teal_700</item>
 </style>
 
+
+    <style name="AppTextField"
+        parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="boxStrokeColor">@color/teal_700</item>
+    </style>
 </resources>
