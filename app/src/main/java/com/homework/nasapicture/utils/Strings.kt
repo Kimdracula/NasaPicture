@@ -1,5 +1,7 @@
 package com.homework.nasapicture.utils
 
+import com.homework.nasapicture.ui.main.YesterdayFragment
+
 const val BASE_URL = "https://api.nasa.gov/"
 const val END_POINT = "planetary/apod?"
 const val API_HEADER = "api_key"
@@ -9,3 +11,8 @@ const val WIKI_URL = "https://en.wikipedia.org/wiki/"
 const val UNKNOWN_ERROR = "Что то пошло не так"
 const val KEY_SP = "sp"
 const val KEY_NEW_THEME = "key_new_theme"
+const val TODAY_FRAGMENT = 0
+const val YESTERDAY_FRAGMENT = 1
+const val DBY_FRAGMENT = 2
+
+
