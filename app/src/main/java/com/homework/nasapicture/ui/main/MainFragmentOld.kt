@@ -20,7 +20,8 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 class MainFragmentOld : Fragment() {
-/*
+    /*
+
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
 

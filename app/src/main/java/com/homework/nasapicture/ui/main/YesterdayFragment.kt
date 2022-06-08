@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import coil.load
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.homework.nasapicture.R
 import com.homework.nasapicture.databinding.FragmentMainBinding
 import com.homework.nasapicture.databinding.FragmentYesterdayBinding
@@ -19,6 +21,7 @@ class YesterdayFragment:Fragment() {
     private var _binding: FragmentYesterdayBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: MainViewModel
+    private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,25 +37,33 @@ class YesterdayFragment:Fragment() {
             renderData(it)}
         val date = Date()
         viewModel.sendRequest(date.formattedYesterday)
+        setBottomSheetBehavior(binding.includeBottomSheet.bottomSheetContainer)
 
     }
+
+    private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {
+        bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
+    }
+
+
 
     private fun renderData(it: MainState?) {
         when (it) {
             is MainState.Loading -> {
-                //  binding.imageViewProgress.load(R.drawable.progress_animation)
+                  binding.imageViewProgress.load(R.drawable.progress_animation)
             }
             is MainState.Error -> {
                 with(binding) {
-                    // imageViewProgress.visibility = View.GONE
-                    binding.nasaPictureImageView.load(R.drawable.error_image)}
+                    imageViewProgress.visibility = View.GONE
+                    nasaPictureImageView.load(R.drawable.error_image)}
             }
             is MainState.Success -> {
                 with(binding) {
-                    //  imageViewProgress.visibility = View.GONE
+                    imageViewProgress.visibility = View.GONE
                     nasaPictureImageView.load(it.pictureOfTheDay.url)
-                    //   includeBottomSheet.bottomSheetDescriptionHeader.text = it.pictureOfTheDay.title
-                    //   includeBottomSheet.bottomSheetDescription.text = it.pictureOfTheDay.explanation
+                       includeBottomSheet.bottomSheetDescriptionHeader.text = it.pictureOfTheDay.title
+                      includeBottomSheet.bottomSheetDescription.text = it.pictureOfTheDay.explanation
                 }
             }
 

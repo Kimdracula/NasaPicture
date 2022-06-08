@@ -67,12 +67,4 @@
         android:layout_gravity="bottom"
         app:menu="@menu/bottom_navigation_menu" />
 
-
-    <ImageView
-        android:id="@+id/imageViewProgress"
-        android:layout_width="105dp"
-        android:layout_height="105dp"
-        app:layout_anchor="@+id/viewPager"
-        app:layout_anchorGravity="center"
-        tools:src="@drawable/ic_progress" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
