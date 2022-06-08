@@ -5,7 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.google.android.material.tabs.TabLayoutMediator
+import com.homework.nasapicture.R
 import com.homework.nasapicture.databinding.FragmentMainBinding
+import com.homework.nasapicture.ui.picture_of_the_day.ViewPagerAdapter
 
 
 class MainFragment: Fragment() {
@@ -27,7 +30,14 @@ class MainFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 binding.viewPager.adapter = ViewPagerAdapter(requireActivity())
 
-
+        TabLayoutMediator(binding.tabsGroup,binding.viewPager
+        ) { tab, position ->
+            tab.text = when (position) {
+                0 -> getString(R.string.today)
+                1 -> getString(R.string.yesterday)
+                else -> getString(R.string.tdby)
+            }
+        }.attach()
     }
 
     override fun onDestroy() {

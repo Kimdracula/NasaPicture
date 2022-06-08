@@ -1,4 +1,4 @@
-package com.homework.nasapicture.ui.main
+package com.homework.nasapicture.ui.picture_of_the_day
 
 import android.os.Bundle
 import android.view.LayoutInflater

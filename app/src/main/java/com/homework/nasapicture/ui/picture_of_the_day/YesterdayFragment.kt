@@ -1,4 +1,4 @@
-package com.homework.nasapicture.ui.main
+package com.homework.nasapicture.ui.picture_of_the_day
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +10,6 @@ import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.homework.nasapicture.R
-import com.homework.nasapicture.databinding.FragmentMainBinding
 import com.homework.nasapicture.databinding.FragmentYesterdayBinding
 import com.homework.nasapicture.utils.Date
 import com.homework.nasapicture.utils.UNKNOWN_ERROR
