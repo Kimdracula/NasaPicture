@@ -6,11 +6,9 @@ import android.os.Bundle
 import android.view.*
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import coil.load
-import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.tabs.TabLayout
 import com.homework.nasapicture.R
@@ -57,7 +55,7 @@ class MainFragment : Fragment() {
         viewModel.getLiveData().observe(viewLifecycleOwner) {
             renderData(it)
         }
-        setBottomAppBar(view)
+
         viewModel.sendRequest(formattedNow)
         setBottomSheetBehavior(binding.includeBottomSheet.bottomSheetContainer)
         setInputLayoutIconClickAction()
@@ -136,65 +134,6 @@ class MainFragment : Fragment() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.menu_app_bar, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.app_bar_fav -> Toast.makeText(
-                context, "Favourite",
-                Toast.LENGTH_SHORT
-            ).show()
-            R.id.app_bar_settings ->
-                requireActivity().supportFragmentManager.beginTransaction()
-                    .replace(R.id.container, SettingsFragment.newInstance())
-                    .addToBackStack("")
-                    .commit()
-
-
-
-            android.R.id.home -> {
-                BottomNavigationDrawerFragment.newInstance()
-                    .show(requireActivity().supportFragmentManager, "")
-
-            }
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
-    private fun setBottomAppBar(view: View) {
-        val context = activity as MainActivity
-        context.setSupportActionBar(view.findViewById(R.id.bottom_app_bar))
-        setHasOptionsMenu(true)
-
-        binding.fab.setOnClickListener {
-            if (isMain) {
-                binding.bottomAppBar.navigationIcon = null
-                binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
-                binding.bottomAppBar.replaceMenu(R.menu.menu_app_bar_secondary)
-                binding.fab.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(),
-                        R.drawable.ic_back_fab
-                    )
-                )
-            } else {
-                binding.bottomAppBar.navigationIcon =
-                    (ContextCompat.getDrawable(requireContext(), R.drawable.hamburger_icon))
-                binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
-                binding.bottomAppBar.replaceMenu(R.menu.menu_app_bar)
-                binding.fab.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(),
-                        R.drawable.plus_fab_icon
-                    )
-                )
-            }
-            isMain = !isMain
-        }
-    }
 
 
     override fun onDestroy() {
