@@ -5,8 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.homework.nasapicture.R
-import com.homework.nasapicture.databinding.FragmentMainBinding
 import com.homework.nasapicture.databinding.FragmentMarsBinding
 
 

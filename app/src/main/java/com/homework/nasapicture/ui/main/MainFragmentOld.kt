@@ -11,7 +11,6 @@ import coil.load
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.tabs.TabLayout
 import com.homework.nasapicture.R
-import com.homework.nasapicture.databinding.FragmentMainBinding
 import com.homework.nasapicture.utils.UNKNOWN_ERROR
 import com.homework.nasapicture.utils.WIKI_URL
 import com.homework.nasapicture.viewmodel.MainState
