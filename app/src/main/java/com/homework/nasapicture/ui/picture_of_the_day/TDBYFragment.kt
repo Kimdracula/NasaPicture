@@ -13,7 +13,7 @@ import com.homework.nasapicture.R
 import com.homework.nasapicture.databinding.FragmentTdbyBinding
 import com.homework.nasapicture.utils.Date
 import com.homework.nasapicture.utils.UNKNOWN_ERROR
-import com.homework.nasapicture.viewmodel.MainState
+import com.homework.nasapicture.viewmodel.POTDState
 import com.homework.nasapicture.viewmodel.MainViewModel
 
 class TDBYFragment:Fragment() {
@@ -48,17 +48,17 @@ class TDBYFragment:Fragment() {
 
 
 
-    private fun renderData(it: MainState?) {
+    private fun renderData(it: POTDState?) {
         when (it) {
-            is MainState.Loading -> {
+            is POTDState.Loading -> {
                   binding.imageViewProgress.load(R.drawable.progress_animation)
             }
-            is MainState.Error -> {
+            is POTDState.Error -> {
                 with(binding) {
                      imageViewProgress.visibility = View.GONE
                     nasaPictureImageView.load(R.drawable.error_image)}
             }
-            is MainState.Success -> {
+            is POTDState.Success -> {
                 with(binding) {
                       imageViewProgress.visibility = View.GONE
                     nasaPictureImageView.load(it.pictureOfTheDay.url)
@@ -68,7 +68,7 @@ class TDBYFragment:Fragment() {
             }
 
             else -> {
-                MainState.Error(Throwable(UNKNOWN_ERROR))
+                POTDState.Error(Throwable(UNKNOWN_ERROR))
             }
         }
     }

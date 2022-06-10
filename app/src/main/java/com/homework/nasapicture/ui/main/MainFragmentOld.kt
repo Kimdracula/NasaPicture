@@ -1,22 +1,6 @@
 package com.homework.nasapicture.ui.main
 
-import android.content.Intent
-import android.net.Uri
-import android.os.Bundle
-import android.view.*
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import coil.load
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.tabs.TabLayout
-import com.homework.nasapicture.R
-import com.homework.nasapicture.utils.UNKNOWN_ERROR
-import com.homework.nasapicture.utils.WIKI_URL
-import com.homework.nasapicture.viewmodel.MainState
-import com.homework.nasapicture.viewmodel.MainViewModel
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 
 class MainFragmentOld : Fragment() {
     /*

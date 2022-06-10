@@ -2,7 +2,7 @@ package com.homework.nasapicture.model
 import com.google.gson.annotations.SerializedName
 
 
-data class NasaDTO(
+data class PictureOfTheDayDTO(
     @SerializedName("copyright")
     val copyright: String,
     @SerializedName("date")
