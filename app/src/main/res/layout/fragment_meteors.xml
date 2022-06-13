@@ -7,7 +7,7 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:id="@+id/"
+        android:id="@+id/TVmeteors"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="Meteors" />

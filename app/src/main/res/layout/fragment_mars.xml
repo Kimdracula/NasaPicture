@@ -5,22 +5,40 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-
+    <DatePicker
+        android:id="@+id/datePicker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:datePickerMode="spinner"
+        android:calendarViewShown="false"
+        />
 
     <com.homework.nasapicture.utils.EquilateralImageView
-        android:id="@+id/nasaPictureImageView"
+        android:id="@+id/marsPictureImageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
+
         android:layout_gravity="center">
 
     </com.homework.nasapicture.utils.EquilateralImageView>
+
+
+
+
+    <TextView
+        android:id="@+id/textViewTest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:text="TextView" />
+
 
     <ImageView
         android:id="@+id/imageViewProgress"
         android:layout_width="105dp"
         android:layout_height="105dp"
-        app:layout_anchor="@+id/nasaPictureImageView"
+        app:layout_anchor="@+id/marsPictureImageView"
         app:layout_anchorGravity="center"
         tools:src="@drawable/ic_progress" />
 

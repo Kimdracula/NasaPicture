@@ -18,6 +18,7 @@ interface NasaApi {
     @GET(END_POINT_MRP) // Mars Rover Photos
     fun getMarsRoverPhotos(
         @Query("earth_date") date: String,
+        @Query("name") name: String,
         @Query(API_HEADER) apikey: String
     ): Call<MarsRoverPhotosDTO>
 

@@ -1,10 +1,11 @@
 package com.homework.nasapicture.ui.mars
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.DatePicker
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.homework.nasapicture.R
@@ -13,6 +14,7 @@ import com.homework.nasapicture.utils.Date
 import com.homework.nasapicture.utils.UNKNOWN_ERROR
 import com.homework.nasapicture.viewmodel.MarsState
 import com.homework.nasapicture.viewmodel.MarsViewModel
+import java.util.*
 
 
 class MarsFragment : Fragment() {
@@ -35,8 +37,17 @@ class MarsFragment : Fragment() {
             renderData(it)
     }
         val date = Date()
-        viewModel.sendRequest("2015-6-3")
-    }
+        viewModel.sendRequest(date.formattedYesterday,"spirit")
+
+      binding.datePicker.setOnDateChangedListener { datePicker, year, month, day ->
+viewModel.sendRequest("$year-${month+1}-$day","spirit")
+      }
+
+
+
+        }
+
+
 
     private fun renderData(it: MarsState) {
         when (it) {
@@ -46,17 +57,18 @@ class MarsFragment : Fragment() {
             is MarsState.Error -> {
                 with(binding) {
                     imageViewProgress.visibility = View.GONE
-                    binding.nasaPictureImageView.load(R.drawable.error_image)}
+                    binding.marsPictureImageView.load(R.drawable.error_image)}
             }
             is MarsState.Success -> {
                 with(binding) {
                     imageViewProgress.visibility = View.GONE
-                    nasaPictureImageView.load(it.marsRoverPhotos.photos[0].imgSrc)
-                }
-            }
+                    if(it.marsRoverPhotos.photos.isEmpty()){
+                            binding.marsPictureImageView.load(R.drawable.error_image)
+                        }else{
+                    marsPictureImageView.load(it.marsRoverPhotos.photos[0].imgSrc)}
 
-            else -> {
-                MarsState.Error(Throwable(UNKNOWN_ERROR))
+                    textViewTest.text=it.marsRoverPhotos.photos[0].camera.fullName}
+
             }
         }
     }

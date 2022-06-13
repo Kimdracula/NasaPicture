@@ -21,12 +21,12 @@ class MarsViewModel (
             return liveData
         }
 
-        fun sendRequest(date: String) {
+        fun sendRequest(date: String, name: String) {
             liveData.postValue(MarsState.Loading)
             if (com.homework.nasapicture.BuildConfig.NASA_API_KEY.isNullOrBlank()) {
                 liveData.postValue(MarsState.Error(Throwable(API_KEY_ERROR)))
             } else {
-                marsRoverPhotos.getRetrofit().getMarsRoverPhotos(date,com.homework.nasapicture.BuildConfig.NASA_API_KEY)
+                marsRoverPhotos.getRetrofit().getMarsRoverPhotos(date, name, com.homework.nasapicture.BuildConfig.NASA_API_KEY)
                     .enqueue(callback)
             }
         }
