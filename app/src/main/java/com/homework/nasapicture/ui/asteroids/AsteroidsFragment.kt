@@ -1,18 +1,17 @@
-package com.homework.nasapicture.ui.meteors
+package com.homework.nasapicture.ui.asteroids
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.homework.nasapicture.R
-import com.homework.nasapicture.databinding.FragmentMarsBinding
-import com.homework.nasapicture.databinding.FragmentMeteorsBinding
+import com.homework.nasapicture.databinding.FragmentAsteroidsBinding
 
 
-class MeteorsFragment : Fragment() {
 
-    private var _binding: FragmentMeteorsBinding? = null
+class AsteroidsFragment : Fragment() {
+
+    private var _binding: FragmentAsteroidsBinding? = null
     private val binding get() = _binding!!
 
 
@@ -20,8 +19,8 @@ class MeteorsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentMeteorsBinding.inflate(inflater, container, false)
+    ): View {
+        _binding = FragmentAsteroidsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -33,7 +32,7 @@ class MeteorsFragment : Fragment() {
 
     companion object {
 
-        fun newInstance() = MeteorsFragment()
+        fun newInstance() = AsteroidsFragment()
                 }
     override fun onDestroy() {
         super.onDestroy()

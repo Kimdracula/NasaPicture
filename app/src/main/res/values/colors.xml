@@ -12,5 +12,7 @@
     <color name="dark_gray">#48484C</color>
     <color name="yellow">#FFCA28</color>
     <color name="coral">#EF5350</color>
+    <color name="app_background">#010613</color>
+    <color name="default_text_color">#FFFFFF</color>
 
 </resources>
