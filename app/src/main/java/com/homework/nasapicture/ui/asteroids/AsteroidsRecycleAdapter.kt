@@ -4,17 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.homework.nasapicture.databinding.RecycleAsteroidItemBinding
-import com.homework.nasapicture.model.AsteroidsDTO
+import com.homework.nasapicture.model.X20150907
 
-class AsteroidsRecycleAdapter(private val onItemListClickListener: OnItemListClickListener,
-                              private var asteroidsList: List<AsteroidsDTO> = emptyList()
+class AsteroidsRecycleAdapter(
+                              private var asteroidsList: List<X20150907>
 ) :
     RecyclerView.Adapter<AsteroidsRecycleAdapter.ViewHolder>()  {
 
-
-    fun setWeatherList(newWeatherList: List<Weather>) {
-
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = RecycleAsteroidItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -22,19 +18,18 @@ class AsteroidsRecycleAdapter(private val onItemListClickListener: OnItemListCli
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(weatherList[position])
+        holder.bind(asteroidsList[position])
     }
 
-    override fun getItemCount(): Int = weatherList.size
+    override fun getItemCount(): Int = asteroidsList.size
 
     inner class ViewHolder(private val binding: RecycleAsteroidItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(weather: Weather) {
+        fun bind(asteroidsList: X20150907) {
             with(binding){
-                textViewCityName.text = weather.city.name
-                root.setOnClickListener {
-                    onItemListClickListener.onItemClick(weather)
+                textViewTitleAsteroid.text = asteroidsList.name
+                textViewCloseDateApproach.text = asteroidsList.closeApproachData[0].closeApproachDate
+
                 }
             }
         }}
-}
