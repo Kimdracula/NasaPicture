@@ -32,11 +32,12 @@ class AsteroidsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this)[AsteroidsViewModel::class.java]
+
+        val date = Date()
+        viewModel.sendRequest(date.formattedNow)
         viewModel.getLiveData().observe(viewLifecycleOwner) {
             renderData(it)
         }
-        val date = Date()
-        viewModel.sendRequest(date.formattedNow)
     }
 
     private fun renderData(it: AsteroidsState?) {
