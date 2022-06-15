@@ -5,12 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import coil.load
+import com.homework.nasapicture.R
 import com.homework.nasapicture.databinding.AsteroidDetailsFragmentBinding
 import com.homework.nasapicture.model.AsteroidsDTO
 import com.homework.nasapicture.model.X20150907
 import com.homework.nasapicture.utils.ASTEROIDS_KEY_BUNDLE
 import com.homework.nasapicture.viewmodel.AsteroidDetailsViewModel
+import com.homework.nasapicture.viewmodel.AsteroidsDetailsState
 import com.homework.nasapicture.viewmodel.AsteroidsViewModel
+import com.homework.nasapicture.viewmodel.MarsState
 
 
 class AsteroidsDetailsFragment: Fragment() {
@@ -33,11 +37,39 @@ class AsteroidsDetailsFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        arguments?.getParcelable<X20150907>(ASTEROIDS_KEY_BUNDLE)?.let {
+        arguments?.getParcelable<X20150907>(ASTEROIDS_KEY_BUNDLE)?.let { it ->
             viewModel.getAsteroidsDetails(it)
+            viewModel.getLiveData().observe(viewLifecycleOwner){
+                renderData(it)
+            }
         }
     }
 
+    private fun renderData(it: AsteroidsDetailsState?) {
+        when (it) {
+            is AsteroidsDetailsState.Loading -> {
+            //    binding.imageViewProgress.load(R.drawable.progress_animation)
+            }
+            is AsteroidsDetailsState.Error -> {
+                with(binding) {
+                   // imageViewProgress.visibility = View.GONE
+                    binding.imageViewAsteroidStatus.load(R.drawable.error_image)
+                }
+            }
+            is AsteroidsDetailsState.Success -> {
+                with(binding) {
+if (it.asteroids.isPotentiallyHazardousAsteroid){
+    imageViewAsteroidStatus.load(R.drawable.asteroid_hazardous)
+}
+textViewCloseApproachDate.text = it.asteroids.closeApproachData[0].toString()
+                    textViewAbsoluteMagnitude.text = it.asteroids.absoluteMagnitudeH.toString()
+                    textViewEstimatedDiameter.text = it.asteroids.estimatedDiameter.kilometers.toString()
+                //    textViewRelativeVelocity.text = it.asteroids.
+                //    textViewDistanceFromEarth.text=it.asteroids.
+                }
+            }
+        }
+    }
     companion object {
 
         fun newInstance(bundle: Bundle): AsteroidsDetailsFragment {

@@ -1,4 +1,5 @@
 package com.homework.nasapicture.model
+
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
@@ -13,6 +14,7 @@ data class AsteroidsDTO(
     @SerializedName("near_earth_objects")
     val nearEarthObjects: NearEarthObjects
 ) : Parcelable
+
 @Parcelize
 data class Links(
     @SerializedName("next")
@@ -21,14 +23,16 @@ data class Links(
     val prev: String,
     @SerializedName("self")
     val self: String
-):Parcelable
+) : Parcelable
+
 @Parcelize
 data class NearEarthObjects(
     @SerializedName("2015-09-07")
     val x20150907: List<X20150907>,
     @SerializedName("2015-09-08")
     val x20150908: List<X20150908>
-):Parcelable
+) : Parcelable
+
 @Parcelize
 data class X20150907(
     @SerializedName("absolute_magnitude_h")
@@ -43,13 +47,16 @@ data class X20150907(
     val isPotentiallyHazardousAsteroid: Boolean,
     @SerializedName("is_sentry_object")
     val isSentryObject: Boolean,
+    @SerializedName("links")
+    val links: LinksX,
     @SerializedName("name")
     val name: String,
     @SerializedName("nasa_jpl_url")
     val nasaJplUrl: String,
     @SerializedName("neo_reference_id")
     val neoReferenceId: String
-):Parcelable
+) : Parcelable
+
 @Parcelize
 data class X20150908(
     @SerializedName("absolute_magnitude_h")
@@ -62,13 +69,16 @@ data class X20150908(
     val isPotentiallyHazardousAsteroid: Boolean,
     @SerializedName("is_sentry_object")
     val isSentryObject: Boolean,
+    @SerializedName("links")
+    val links: LinksX,
     @SerializedName("name")
     val name: String,
     @SerializedName("nasa_jpl_url")
     val nasaJplUrl: String,
     @SerializedName("neo_reference_id")
     val neoReferenceId: String
-):Parcelable
+) : Parcelable
+
 @Parcelize
 data class CloseApproachData(
     @SerializedName("close_approach_date")
@@ -80,15 +90,26 @@ data class CloseApproachData(
     @SerializedName("miss_distance")
     val missDistance: MissDistance,
     @SerializedName("orbiting_body")
-    val orbitingBody: String
-):Parcelable
+    val orbitingBody: String,
+    @SerializedName("relative_velocity")
+    val relativeVelocity: RelativeVelocity
+) : Parcelable
+
 @Parcelize
 data class EstimatedDiameter(
     @SerializedName("kilometers")
-    val kilometers: Kilometers
+    val kilometers: Kilometers,
+    @SerializedName("meters")
+    val meters: Meters,
+    @SerializedName("miles")
+    val miles: Miles
+) : Parcelable
 
-):Parcelable
-
+@Parcelize
+data class LinksX(
+    @SerializedName("self")
+    val self: String
+) : Parcelable
 
 @Parcelize
 data class MissDistance(
@@ -100,8 +121,17 @@ data class MissDistance(
     val lunar: String,
     @SerializedName("miles")
     val miles: String
-):Parcelable
+) : Parcelable
 
+@Parcelize
+data class RelativeVelocity(
+    @SerializedName("kilometers_per_hour")
+    val kilometersPerHour: String,
+    @SerializedName("kilometers_per_second")
+    val kilometersPerSecond: String,
+    @SerializedName("miles_per_hour")
+    val milesPerHour: String
+) : Parcelable
 
 @Parcelize
 data class Kilometers(
@@ -109,7 +139,23 @@ data class Kilometers(
     val estimatedDiameterMax: Double,
     @SerializedName("estimated_diameter_min")
     val estimatedDiameterMin: Double
-):Parcelable
+) : Parcelable
+
+@Parcelize
+data class Meters(
+    @SerializedName("estimated_diameter_max")
+    val estimatedDiameterMax: Double,
+    @SerializedName("estimated_diameter_min")
+    val estimatedDiameterMin: Double
+) : Parcelable
+
+@Parcelize
+data class Miles(
+    @SerializedName("estimated_diameter_max")
+    val estimatedDiameterMax: Double,
+    @SerializedName("estimated_diameter_min")
+    val estimatedDiameterMin: Double
+) : Parcelable
 
 @Parcelize
 data class CloseApproachDataX(
@@ -121,5 +167,4 @@ data class CloseApproachDataX(
     val epochDateCloseApproach: Long,
     @SerializedName("orbiting_body")
     val orbitingBody: String,
-
-):Parcelable
+) : Parcelable
