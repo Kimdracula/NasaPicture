@@ -26,8 +26,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="16dp"
-
-        android:text="@{asteroid.closeApproachDate}"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -35,14 +33,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewTitleAsteroid" />
 
     <ImageView
-        android:id="@+id/img_status_hazardous"
+        android:id="@+id/imgStatusHazardous"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/textViewCloseDateApproach"
         app:layout_constraintEnd_toStartOf="@+id/guidelineLeft"
         app:layout_constraintTop_toTopOf="@+id/textViewTitleAsteroid"
-        app:srcCompat="@drawable/ic_status_danger"
-        android:contentDescription="@{asteroid.codename}" />
+        app:srcCompat="@drawable/ic_status_normal"
+        />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineRight"

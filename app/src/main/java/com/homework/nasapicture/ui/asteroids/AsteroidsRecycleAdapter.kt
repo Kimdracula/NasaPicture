@@ -3,18 +3,23 @@ package com.homework.nasapicture.ui.asteroids
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import com.homework.nasapicture.R
 import com.homework.nasapicture.databinding.RecycleAsteroidItemBinding
 import com.homework.nasapicture.model.X20150907
 
 class AsteroidsRecycleAdapter(
-                              private var asteroidsList: List<X20150907> = emptyList()
+    private val onItemListClickListener: OnItemListClickListener,
+    private var asteroidsList: List<X20150907> = emptyList()
 ) :
-    RecyclerView.Adapter<AsteroidsRecycleAdapter.ViewHolder>()  {
-fun setAsteroidsList(incomingList: List<X20150907>) {
-    asteroidsList = incomingList
-}
+    RecyclerView.Adapter<AsteroidsRecycleAdapter.ViewHolder>() {
+    fun setAsteroidsList(incomingList: List<X20150907>) {
+        asteroidsList = incomingList
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = RecycleAsteroidItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            RecycleAsteroidItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
@@ -27,10 +32,17 @@ fun setAsteroidsList(incomingList: List<X20150907>) {
     inner class ViewHolder(private val binding: RecycleAsteroidItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(asteroidsList: X20150907) {
-            with(binding){
+            with(binding) {
                 textViewTitleAsteroid.text = asteroidsList.name
-               textViewCloseDateApproach.text = asteroidsList.closeApproachData[0].closeApproachDate
-
+                textViewCloseDateApproach.text =
+                    asteroidsList.closeApproachData[0].closeApproachDate
+                if (asteroidsList.isPotentiallyHazardousAsteroid) {
+                    imgStatusHazardous.load(R.drawable.ic_status_danger)
+                }
+                root.setOnClickListener {
+                    onItemListClickListener.OnItemClick(asteroidsList)
                 }
             }
-        }}
+        }
+    }
+}

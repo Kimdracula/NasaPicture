@@ -9,7 +9,6 @@
         android:id="@+id/nasaPictureImageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
         android:layout_gravity="center">
 
     </com.homework.nasapicture.utils.EquilateralImageView>
