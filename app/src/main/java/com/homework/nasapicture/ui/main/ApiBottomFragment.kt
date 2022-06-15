@@ -25,7 +25,7 @@ class ApiBottomFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentApiBottomBinding.inflate(inflater, container, false)
-        childFragmentManager.beginTransaction().add(R.id.containerApi, POTDFragment.newInstance()).commitNowAllowingStateLoss()
+        childFragmentManager.beginTransaction().replace(R.id.containerApi, POTDFragment.newInstance()).commitNowAllowingStateLoss()
         return binding.root
     }
 
