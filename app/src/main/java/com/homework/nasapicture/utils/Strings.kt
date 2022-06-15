@@ -14,5 +14,6 @@ const val KEY_NEW_THEME = "key_new_theme"
 const val TODAY_FRAGMENT = 0
 const val YESTERDAY_FRAGMENT = 1
 const val DBY_FRAGMENT = 2
+const val ASTEROIDS_KEY_BUNDLE = "asteroids_key"
 
 

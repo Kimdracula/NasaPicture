@@ -14,6 +14,7 @@ import coil.load
 import com.homework.nasapicture.R
 import com.homework.nasapicture.databinding.FragmentAsteroidsBinding
 import com.homework.nasapicture.model.X20150907
+import com.homework.nasapicture.utils.ASTEROIDS_KEY_BUNDLE
 import com.homework.nasapicture.utils.Date
 import com.homework.nasapicture.viewmodel.AsteroidsState
 import com.homework.nasapicture.viewmodel.AsteroidsViewModel
@@ -79,7 +80,6 @@ class AsteroidsFragment : Fragment(), OnItemListClickListener {
     }
 
     companion object {
-
         fun newInstance() = AsteroidsFragment()
     }
 
@@ -88,7 +88,10 @@ class AsteroidsFragment : Fragment(), OnItemListClickListener {
         _binding = null
     }
 
-    override fun OnItemClick(asteroids: X20150907) {
-       childFragmentManager.beginTransaction().replace(R.id.containerApi, AsteroidsDetailsFragment.newInstance()).commit()
-    }
+    override fun onItemClick(asteroidsList: X20150907) {
+       requireActivity().supportFragmentManager.beginTransaction().replace(R.id.containerApi, AsteroidsDetailsFragment.newInstance(
+           Bundle().apply {
+               putParcelable(ASTEROIDS_KEY_BUNDLE,asteroidsList)
+    })).commit()
+}
 }

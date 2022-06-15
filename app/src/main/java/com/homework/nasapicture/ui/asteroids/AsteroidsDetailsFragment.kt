@@ -28,6 +28,10 @@ class AsteroidsDetailsFragment: Fragment()  {
 
     companion object {
 
-        fun newInstance() = AsteroidsDetailsFragment()
+        fun newInstance(bundle: Bundle): AsteroidsDetailsFragment {
+            val fragment = AsteroidsDetailsFragment()
+            fragment.arguments = bundle
+            return fragment
+        }
     }
 }

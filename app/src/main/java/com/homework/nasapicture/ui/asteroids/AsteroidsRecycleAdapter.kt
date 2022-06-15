@@ -13,6 +13,8 @@ class AsteroidsRecycleAdapter(
     private var asteroidsList: List<X20150907> = emptyList()
 ) :
     RecyclerView.Adapter<AsteroidsRecycleAdapter.ViewHolder>() {
+
+
     fun setAsteroidsList(incomingList: List<X20150907>) {
         asteroidsList = incomingList
     }
@@ -40,7 +42,7 @@ class AsteroidsRecycleAdapter(
                     imgStatusHazardous.load(R.drawable.ic_status_danger)
                 }
                 root.setOnClickListener {
-                    onItemListClickListener.OnItemClick(asteroidsList)
+                    onItemListClickListener.onItemClick(asteroidsList)
                 }
             }
         }
