@@ -32,7 +32,6 @@ class AsteroidsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this)[AsteroidsViewModel::class.java]
-
         val date = Date()
         viewModel.sendRequest(date.formattedNow)
         viewModel.getLiveData().observe(viewLifecycleOwner) {
@@ -43,8 +42,9 @@ class AsteroidsFragment : Fragment() {
     private fun renderData(it: AsteroidsState?) {
 when(it){
     is AsteroidsState.Success ->{
-        val adapter = AsteroidsRecycleAdapter(it.asteroids.nearEarthObjects.x20150907)
-        binding.recycleList.adapter =adapter
+        val myAdapter = AsteroidsRecycleAdapter()
+        myAdapter.setAsteroidsList(it.asteroids.nearEarthObjects.x20150907)
+        binding.recycleList.adapter =myAdapter
     }
 }
     }

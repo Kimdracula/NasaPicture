@@ -25,7 +25,7 @@ class AsteroidsViewModel(
             if (com.homework.nasapicture.BuildConfig.NASA_API_KEY.isNullOrBlank()) {
                 liveData.postValue(AsteroidsState.Error(Throwable(API_KEY_ERROR)))
             } else {
-                asteroids.getRetrofit().getAsteroids("2022-06-14","2022-06-17",com.homework.nasapicture.BuildConfig.NASA_API_KEY)
+                asteroids.getRetrofit().getAsteroids("2015-09-07","2015-09-08",com.homework.nasapicture.BuildConfig.NASA_API_KEY)
                     .enqueue(callback)
             }
         }
