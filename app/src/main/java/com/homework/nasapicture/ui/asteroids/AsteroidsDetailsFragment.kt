@@ -9,10 +9,10 @@ import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.homework.nasapicture.R
 import com.homework.nasapicture.databinding.AsteroidDetailsFragmentBinding
-import com.homework.nasapicture.model.AsteroidsDTO
 import com.homework.nasapicture.model.X20150907
 import com.homework.nasapicture.utils.ASTEROIDS_KEY_BUNDLE
-import com.homework.nasapicture.viewmodel.*
+import com.homework.nasapicture.viewmodel.AsteroidDetailsViewModel
+import com.homework.nasapicture.viewmodel.AsteroidsDetailsState
 
 
 class AsteroidsDetailsFragment: Fragment() {

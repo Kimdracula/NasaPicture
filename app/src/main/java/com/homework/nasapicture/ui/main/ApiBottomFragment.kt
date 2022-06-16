@@ -9,7 +9,7 @@ import com.homework.nasapicture.R
 import com.homework.nasapicture.databinding.FragmentApiBottomBinding
 import com.homework.nasapicture.ui.mars.MarsFragment
 import com.homework.nasapicture.ui.asteroids.AsteroidsFragment
-import com.homework.nasapicture.ui.moon.MoonFragment
+import com.homework.nasapicture.ui.earth.EarthFragment
 import com.homework.nasapicture.ui.picture_of_the_day.POTDFragment
 import com.homework.nasapicture.ui.settings.SettingsFragment
 
@@ -52,7 +52,7 @@ class ApiBottomFragment : Fragment() {
                     true                }
                 R.id.action_moon -> {
                     childFragmentManager.beginTransaction()
-                        .replace(R.id.containerApi, MoonFragment.newInstance()).commit()
+                        .replace(R.id.containerApi, EarthFragment.newInstance()).commit()
                     true
                 }
 

@@ -29,4 +29,10 @@ interface NasaApi {
         @Query(API_KEY) apikey: String
     ): Call<AsteroidsDTO>
 
+    @GET(END_POINT_ASTEROIDS) // Earth photos
+    fun getEarthImages(
+        @Query("date") date: String,
+        @Query(API_KEY) apikey: String
+    ): Call<EarthDTO>
+
 }
