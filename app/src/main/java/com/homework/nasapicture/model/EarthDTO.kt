@@ -1,7 +1,8 @@
 package com.homework.nasapicture.model
 import com.google.gson.annotations.SerializedName
+class EarthDTO : ArrayList<EarthDTOItem>()
 
-data class EarthDTO(
+data class EarthDTOItem(
     @SerializedName("attitude_quaternions")
     val attitudeQuaternions: AttitudeQuaternions,
     @SerializedName("caption")

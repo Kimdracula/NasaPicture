@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="8dp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintStart_toStartOf="parent">
 
@@ -42,37 +43,47 @@
         tools:src="@drawable/ic_progress" />
 
     <TextView
-        android:id="@+id/textViewCamera"
+        android:id="@+id/textViewCaptionHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="15dp"
-        android:text="Камера: "
+        android:text="Описание фото: "
         android:textSize="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/earthPictureImageView" />
 
     <TextView
-        android:id="@+id/textViewLaunch"
+        android:id="@+id/textViewCaption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="14dp"
-        android:text="Дата запуска: "
+        android:layout_marginTop="10dp"
+        android:text="lalalala"
         android:textSize="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewLanding" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewCaptionHeader" />
 
     <TextView
-        android:id="@+id/textViewLanding"
+        android:id="@+id/textViewCoordinatesHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="9dp"
-        android:text="Дата приземления: "
+        android:layout_marginTop="10dp"
+        android:text="Координаты: "
         android:textSize="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewCamera" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewCaption" />
 
+    <TextView
+        android:id="@+id/textViewCoordinates"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:text="100500"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCoordinatesHeader" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

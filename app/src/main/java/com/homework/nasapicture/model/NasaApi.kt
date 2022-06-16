@@ -1,9 +1,6 @@
 package com.homework.nasapicture.model
 
-import com.homework.nasapicture.utils.API_KEY
-import com.homework.nasapicture.utils.END_POINT_APOD
-import com.homework.nasapicture.utils.END_POINT_ASTEROIDS
-import com.homework.nasapicture.utils.END_POINT_MRP
+import com.homework.nasapicture.utils.*
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -29,7 +26,7 @@ interface NasaApi {
         @Query(API_KEY) apikey: String
     ): Call<AsteroidsDTO>
 
-    @GET(END_POINT_ASTEROIDS) // Earth photos
+    @GET(END_POINT_EARTH_CODE) // Earth photos
     fun getEarthImages(
         @Query("date") date: String,
         @Query(API_KEY) apikey: String

@@ -36,12 +36,9 @@ class EarthFragment : Fragment() {
         val date = Date()
         viewModel.sendRequest("2019-05-30")
 
-     //   binding.datePicker.setOnDateChangedListener { datePicker, year, month, day ->
+        //   binding.datePicker.setOnDateChangedListener { datePicker, year, month, day ->
         //    viewModel.sendRequest("$year-${month + 1}-$day")
-        }
-
-
-
+    }
 
 
     private fun renderData(it: EarthState) {
@@ -58,10 +55,13 @@ class EarthFragment : Fragment() {
             is EarthState.Success -> {
                 with(binding) {
                     imageViewProgress.visibility = View.GONE
-                    if (it.earthPhotos.image==null){
-                        binding.earthPictureImageView.load(R.drawable.error_image)
-                    }else{
+                    if (it.earthPhotos[0].image == null) {
+                        earthPictureImageView.load(R.drawable.error_image)
+                    } else {
                         earthPictureImageView.load("https://api.nasa.gov/EPIC/archive/natural/2019/05/30/png/epic_1b_20190530011359.png?api_key=DEMO_KEY")
+                        textViewCaption.text = it.earthPhotos[0].caption
+                        textViewCoordinates.text =
+                            ("lat = ${it.earthPhotos[0].centroidCoordinates.lat}; lon = ${it.earthPhotos[0].centroidCoordinates.lon}")
                     }
 
 
