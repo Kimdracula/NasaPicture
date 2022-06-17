@@ -1,15 +1,15 @@
 package com.homework.nasapicture.ui.earth
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.homework.nasapicture.R
-import com.homework.nasapicture.databinding.FragmentEarthBinding
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import coil.load
-import com.homework.nasapicture.utils.Date
+import com.homework.nasapicture.R
+import com.homework.nasapicture.databinding.FragmentEarthBinding
+import com.homework.nasapicture.viewmodel.EarthImageViewModel
 import com.homework.nasapicture.viewmodel.EarthState
 import com.homework.nasapicture.viewmodel.EarthViewModel
 
@@ -18,6 +18,11 @@ class EarthFragment : Fragment() {
     private var _binding: FragmentEarthBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: EarthViewModel
+    private lateinit var viewModelImage: EarthImageViewModel
+    private lateinit var newYear: String
+    private lateinit var newMonth: String
+    private lateinit var newYDay: String
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,14 +35,19 @@ class EarthFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this)[EarthViewModel::class.java]
-        viewModel.getLiveData().observe(viewLifecycleOwner) {
-            renderData(it)
-        }
-        val date = Date()
-        viewModel.sendRequest("2019-05-30")
+        viewModelImage = ViewModelProvider(this)[EarthImageViewModel::class.java]
 
-        //   binding.datePicker.setOnDateChangedListener { datePicker, year, month, day ->
-        //    viewModel.sendRequest("$year-${month + 1}-$day")
+
+        binding.datePicker.setOnDateChangedListener { datePicker, year, month, day ->
+newYear =year.toString()
+            newMonth = month.toString()
+            newYDay = day.toString()
+            viewModel.sendRequest("$year-${month + 1}-$day")
+            viewModel.getLiveData().observe(viewLifecycleOwner) {
+                renderData(it)
+            }
+        }
+
     }
 
 
@@ -58,7 +68,12 @@ class EarthFragment : Fragment() {
                     if (it.earthPhotos[0].image == null) {
                         earthPictureImageView.load(R.drawable.error_image)
                     } else {
-                        earthPictureImageView.load("https://api.nasa.gov/EPIC/archive/natural/2019/05/30/png/epic_1b_20190530011359.png?api_key=DEMO_KEY")
+
+
+                        viewModelImage.sendRequestImage(newYear,newMonth,newYDay, "png",it.earthPhotos[0].image)
+                        viewModelImage.getLiveData().observe(viewLifecycleOwner) {
+                            loadImage(it)
+                        }
                         textViewCaption.text = it.earthPhotos[0].caption
                         textViewCoordinates.text =
                             ("lat = ${it.earthPhotos[0].centroidCoordinates.lat}; lon = ${it.earthPhotos[0].centroidCoordinates.lon}")
@@ -69,6 +84,26 @@ class EarthFragment : Fragment() {
             }
         }
     }
+
+    private fun loadImage(it: EarthState?) {
+        when (it) {
+            is EarthState.Loading -> {
+                binding.imageViewProgress.load(R.drawable.progress_animation)
+            }
+            is EarthState.Error -> {
+                with(binding) {
+                    imageViewProgress.visibility = View.GONE
+                    binding.earthPictureImageView.load(R.drawable.error_image)
+                }
+            }
+            is EarthState.Success -> {
+                with(binding) {
+                    imageViewProgress.visibility = View.GONE
+                    if (it.earthPhotos[0].image == null) {
+                        earthPictureImageView.load(R.drawable.error_image)}else{
+                        earthPictureImageView.load(it.earthPhotos)
+                    }}}}}
+
 
     companion object {
         fun newInstance() = EarthFragment()

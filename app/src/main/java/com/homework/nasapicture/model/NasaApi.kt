@@ -3,6 +3,7 @@ package com.homework.nasapicture.model
 import com.homework.nasapicture.utils.*
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface NasaApi {
@@ -29,6 +30,16 @@ interface NasaApi {
     @GET(END_POINT_EARTH_CODE) // Earth photos
     fun getEarthImages(
         @Query("date") date: String,
+        @Query(API_KEY) apikey: String
+    ): Call<EarthDTO>
+
+    @GET(END_POINT_EARTH_IMAGE) // Earth photos
+    fun getEarthImage(
+        @Path("year") year: String,
+        @Path("year") month: String,
+        @Path("day") day: String,
+        @Path("png") png: String,
+        @Query("image_code") code:String,
         @Query(API_KEY) apikey: String
     ): Call<EarthDTO>
 
