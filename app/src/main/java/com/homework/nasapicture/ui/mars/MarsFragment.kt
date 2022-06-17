@@ -34,7 +34,7 @@ class MarsFragment : Fragment() {
             renderData(it)
         }
         val date = Date()
-        viewModel.sendRequest("2015-6-3", "spirit")
+        viewModel.sendRequest(date.formattedYesterday, "spirit")
 
         binding.datePicker.setOnDateChangedListener { datePicker, year, month, day ->
             viewModel.sendRequest("$year-${month + 1}-$day", "spirit")
@@ -58,13 +58,13 @@ class MarsFragment : Fragment() {
             is MarsState.Success -> {
                 with(binding) {
                     imageViewProgress.visibility = View.GONE
-                    if (it.marsRoverPhotos.photos.isEmpty()) {
+
+
+                    if (it.marsRoverPhotos.photos==null) {
                         binding.marsPictureImageView.load(R.drawable.error_image)
                     } else {
-                        if (it.marsRoverPhotos.photos[0].imgSrc!=null){
-
                         marsPictureImageView.load(it.marsRoverPhotos.photos[0].imgSrc)}
-                    }
+
 
                     if (it.marsRoverPhotos.photos[0].camera.fullName != null) {
                         textViewCamera.text =

@@ -18,6 +18,7 @@ class EarthFragment : Fragment() {
     private var _binding: FragmentEarthBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: EarthViewModel
+    private var datePath = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,17 +31,16 @@ class EarthFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this)[EarthViewModel::class.java]
-        viewModel.getLiveData().observe(viewLifecycleOwner) {
-            renderData(it)
+
+        binding.datePicker.setOnDateChangedListener { datePicker, year, month, day ->
+            viewModel.sendRequest("$year-${month + 1}-$day")
+            datePath = "$year/${month + 1}/$day"
+            viewModel.getLiveData().observe(viewLifecycleOwner) {
+                renderData(it)
+            }
         }
-        val date = Date()
-        viewModel.sendRequest("2019-05-30")
 
-        //   binding.datePicker.setOnDateChangedListener { datePicker, year, month, day ->
-        //    viewModel.sendRequest("$year-${month + 1}-$day")
     }
-
-
     private fun renderData(it: EarthState) {
         when (it) {
             is EarthState.Loading -> {
@@ -58,7 +58,8 @@ class EarthFragment : Fragment() {
                     if (it.earthPhotos[0].image == null) {
                         earthPictureImageView.load(R.drawable.error_image)
                     } else {
-                        earthPictureImageView.load("https://api.nasa.gov/EPIC/archive/natural/2019/05/30/png/epic_1b_20190530011359.png?api_key=DEMO_KEY")
+                        earthPictureImageView.load("https://api.nasa.gov/EPIC/archive/natural/${datePath}/png/${it.earthPhotos[0].image}" +
+                                ".png?api_key=${com.homework.nasapicture.BuildConfig.NASA_API_KEY}")
                         textViewCaption.text = it.earthPhotos[0].caption
                         textViewCoordinates.text =
                             ("lat = ${it.earthPhotos[0].centroidCoordinates.lat}; lon = ${it.earthPhotos[0].centroidCoordinates.lon}")
