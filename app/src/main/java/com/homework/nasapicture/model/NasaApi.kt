@@ -1,5 +1,6 @@
 package com.homework.nasapicture.model
 
+import AsteroidsDTO
 import com.homework.nasapicture.utils.*
 import retrofit2.Call
 import retrofit2.http.GET

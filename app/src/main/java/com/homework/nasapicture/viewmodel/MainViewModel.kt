@@ -25,13 +25,17 @@ class MainViewModel(
         if (com.homework.nasapicture.BuildConfig.NASA_API_KEY.isNullOrBlank()) {
             liveData.postValue(POTDState.Error(Throwable(API_KEY_ERROR)))
         } else {
-            pictureOfTheDayRetrofit.getRetrofit().getAPOD(com.homework.nasapicture.BuildConfig.NASA_API_KEY, date)
+            pictureOfTheDayRetrofit.getRetrofit()
+                .getAPOD(com.homework.nasapicture.BuildConfig.NASA_API_KEY, date)
                 .enqueue(callback)
         }
     }
 
     private val callback = object : Callback<PictureOfTheDayDTO> {
-        override fun onResponse(call: Call<PictureOfTheDayDTO>, response: Response<PictureOfTheDayDTO>) {
+        override fun onResponse(
+            call: Call<PictureOfTheDayDTO>,
+            response: Response<PictureOfTheDayDTO>
+        ) {
             if (response.isSuccessful) {
                 response.body()?.let {
                     liveData.postValue(POTDState.Success(it))

@@ -11,38 +11,39 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class EarthViewModel (
-        private val liveData: MutableLiveData<EarthState> = MutableLiveData(),
-        private val earthPhotos: Retrofit = Retrofit()
-    ) : ViewModel() {
+class EarthViewModel(
+    private val liveData: MutableLiveData<EarthState> = MutableLiveData(),
+    private val earthPhotos: Retrofit = Retrofit()
+) : ViewModel() {
 
-        fun getLiveData(): LiveData<EarthState> {
-            return liveData
+    fun getLiveData(): LiveData<EarthState> {
+        return liveData
+    }
+
+    fun sendRequest(date: String) {
+        liveData.postValue(EarthState.Loading)
+        if (com.homework.nasapicture.BuildConfig.NASA_API_KEY.isNullOrBlank()) {
+            liveData.postValue(EarthState.Error(Throwable(API_KEY_ERROR)))
+        } else {
+            earthPhotos.getRetrofit()
+                .getEarthImages(date, com.homework.nasapicture.BuildConfig.NASA_API_KEY)
+                .enqueue(callback)
         }
+    }
 
-        fun sendRequest(date: String) {
-            liveData.postValue(EarthState.Loading)
-            if (com.homework.nasapicture.BuildConfig.NASA_API_KEY.isNullOrBlank()) {
-                liveData.postValue(EarthState.Error(Throwable(API_KEY_ERROR)))
-            } else {
-                earthPhotos.getRetrofit().getEarthImages(date,com.homework.nasapicture.BuildConfig.NASA_API_KEY)
-                    .enqueue(callback)
-            }
-        }
-
-        private val callback = object : Callback<EarthDTO> {
-            override fun onResponse(call: Call<EarthDTO>, response: Response<EarthDTO>) {
-                if (response.isSuccessful) {
-                    response.body()?.let {
-                        liveData.postValue(EarthState.Success(it))
-                    }
-                } else {
-                    liveData.postValue(EarthState.Error(Throwable(SERVER_ERROR)))
+    private val callback = object : Callback<EarthDTO> {
+        override fun onResponse(call: Call<EarthDTO>, response: Response<EarthDTO>) {
+            if (response.isSuccessful) {
+                response.body()?.let {
+                    liveData.postValue(EarthState.Success(it))
                 }
-            }
-
-            override fun onFailure(call: Call<EarthDTO>, t: Throwable) {
+            } else {
                 liveData.postValue(EarthState.Error(Throwable(SERVER_ERROR)))
             }
         }
+
+        override fun onFailure(call: Call<EarthDTO>, t: Throwable) {
+            liveData.postValue(EarthState.Error(Throwable(SERVER_ERROR)))
+        }
     }
+}

@@ -1,6 +1,6 @@
 package com.homework.nasapicture.viewmodel
 
-import com.homework.nasapicture.model.AsteroidsDTO
+import AsteroidsDTO
 
 
  sealed class AsteroidsState {

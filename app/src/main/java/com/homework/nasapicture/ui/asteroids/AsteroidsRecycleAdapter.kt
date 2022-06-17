@@ -1,21 +1,21 @@
 package com.homework.nasapicture.ui.asteroids
 
+import AsteroidsDTO
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.homework.nasapicture.R
 import com.homework.nasapicture.databinding.RecycleAsteroidItemBinding
-import com.homework.nasapicture.model.X20150907
 
 class AsteroidsRecycleAdapter(
     private val onItemListClickListener: OnItemListClickListener,
-    private var asteroidsList: List<X20150907> = emptyList()
+    private var asteroidsList: List<AsteroidsDTO> = emptyList()
 ) :
     RecyclerView.Adapter<AsteroidsRecycleAdapter.ViewHolder>() {
 
 
-    fun setAsteroidsList(incomingList: List<X20150907>) {
+    fun setAsteroidsList(incomingList: List<AsteroidsDTO>) {
         asteroidsList = incomingList
     }
 
@@ -33,12 +33,12 @@ class AsteroidsRecycleAdapter(
 
     inner class ViewHolder(private val binding: RecycleAsteroidItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(asteroidsList: X20150907) {
+        fun bind(asteroidsList: AsteroidsDTO) {
             with(binding) {
-                textViewTitleAsteroid.text = asteroidsList.name
+                textViewTitleAsteroid.text = asteroidsList.codename
                 textViewCloseDateApproach.text =
-                    asteroidsList.closeApproachData[0].closeApproachDate
-                if (asteroidsList.isPotentiallyHazardousAsteroid) {
+                    asteroidsList.closeApproachDate
+                if (asteroidsList.isPotentiallyHazardous) {
                     imgStatusHazardous.load(R.drawable.ic_status_danger)
                 }
                 root.setOnClickListener {

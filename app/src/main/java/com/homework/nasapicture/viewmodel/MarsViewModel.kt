@@ -11,39 +11,43 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MarsViewModel (
+class MarsViewModel(
 
     private val liveData: MutableLiveData<MarsState> = MutableLiveData(),
     private val marsRoverPhotos: Retrofit = Retrofit()
-    ) : ViewModel() {
+) : ViewModel() {
 
-        fun getLiveData(): LiveData<MarsState> {
-            return liveData
+    fun getLiveData(): LiveData<MarsState> {
+        return liveData
+    }
+
+    fun sendRequest(date: String, name: String) {
+        liveData.postValue(MarsState.Loading)
+        if (com.homework.nasapicture.BuildConfig.NASA_API_KEY.isNullOrBlank()) {
+            liveData.postValue(MarsState.Error(Throwable(API_KEY_ERROR)))
+        } else {
+            marsRoverPhotos.getRetrofit()
+                .getMarsRoverPhotos(date, name, com.homework.nasapicture.BuildConfig.NASA_API_KEY)
+                .enqueue(callback)
         }
+    }
 
-        fun sendRequest(date: String, name: String) {
-            liveData.postValue(MarsState.Loading)
-            if (com.homework.nasapicture.BuildConfig.NASA_API_KEY.isNullOrBlank()) {
-                liveData.postValue(MarsState.Error(Throwable(API_KEY_ERROR)))
-            } else {
-                marsRoverPhotos.getRetrofit().getMarsRoverPhotos(date, name, com.homework.nasapicture.BuildConfig.NASA_API_KEY)
-                    .enqueue(callback)
-            }
-        }
-
-        private val callback = object : Callback<MarsRoverPhotosDTO> {
-            override fun onResponse(call: Call<MarsRoverPhotosDTO>, response: Response<MarsRoverPhotosDTO>) {
-                if (response.isSuccessful&& response.body()!!.photos.isNotEmpty()) {
-                    response.body()?.let {
-                        liveData.postValue(MarsState.Success(it))
-                    }
-                } else {
-                    liveData.postValue(MarsState.Error(Throwable(SERVER_ERROR)))
+    private val callback = object : Callback<MarsRoverPhotosDTO> {
+        override fun onResponse(
+            call: Call<MarsRoverPhotosDTO>,
+            response: Response<MarsRoverPhotosDTO>
+        ) {
+            if (response.isSuccessful && response.body()!!.photos.isNotEmpty()) {
+                response.body()?.let {
+                    liveData.postValue(MarsState.Success(it))
                 }
-            }
-
-            override fun onFailure(call: Call<MarsRoverPhotosDTO>, t: Throwable) {
+            } else {
                 liveData.postValue(MarsState.Error(Throwable(SERVER_ERROR)))
             }
         }
+
+        override fun onFailure(call: Call<MarsRoverPhotosDTO>, t: Throwable) {
+            liveData.postValue(MarsState.Error(Throwable(SERVER_ERROR)))
+        }
     }
+}
