@@ -33,7 +33,7 @@ class MarsViewModel (
 
         private val callback = object : Callback<MarsRoverPhotosDTO> {
             override fun onResponse(call: Call<MarsRoverPhotosDTO>, response: Response<MarsRoverPhotosDTO>) {
-                if (response.isSuccessful) {
+                if (response.isSuccessful&& response.body()!!.photos.isNotEmpty()) {
                     response.body()?.let {
                         liveData.postValue(MarsState.Success(it))
                     }

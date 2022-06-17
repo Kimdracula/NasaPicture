@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="margin_end_switch">30dp</dimen>
+    <dimen name="screen_padding">8dp</dimen>
+    <dimen name="margin_top_after_title">4dp</dimen>
+    <dimen name="margin_top_between_titles">16dp</dimen>
+    <dimen name="datePicket_hight">150dp</dimen>
+    <dimen name="text_size_earth">16sp</dimen>
+    <dimen name="text_size_mars">16sp</dimen>
+    <dimen name="recycle_asteroid_text_size">16sp</dimen>
+    <dimen name="side_margin_recycle_asteroid">8dp</dimen>
 </resources>

@@ -60,7 +60,7 @@ class MarsFragment : Fragment() {
                     imageViewProgress.visibility = View.GONE
 
 
-                    if (it.marsRoverPhotos.photos==null) {
+                    if (it.marsRoverPhotos.photos.isEmpty()) {
                         binding.marsPictureImageView.load(R.drawable.error_image)
                     } else {
                         marsPictureImageView.load(it.marsRoverPhotos.photos[0].imgSrc)}

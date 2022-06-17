@@ -5,12 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintStart_toStartOf="parent">
+    app:layout_constraintStart_toStartOf="parent"
+    android:padding="@dimen/screen_padding">
 
     <DatePicker
         android:id="@+id/datePicker"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="@dimen/datePicket_hight"
         android:calendarViewShown="false"
         android:datePickerMode="spinner"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,21 +35,21 @@
         android:id="@+id/imageViewProgress"
         android:layout_width="105dp"
         android:layout_height="105dp"
-        android:layout_marginStart="150dp"
+        android:layout_marginStart="145dp"
         android:layout_marginTop="128dp"
         app:layout_anchor="@+id/marsPictureImageView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/datePicker"
-        tools:src="@drawable/ic_progress" />
+        tools:src="@drawable/ic_progress"
+        android:contentDescription="@string/imageViewProgress" />
 
     <TextView
         android:id="@+id/textViewCamera"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="15dp"
-        android:text="Камера: "
-        android:textSize="16dp"
+        android:layout_marginTop="@dimen/margin_top_between_titles"
+        android:text="@string/Camera"
+        android:textSize="@dimen/text_size_mars"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/marsPictureImageView" />
 
@@ -56,10 +57,9 @@
         android:id="@+id/textViewLaunch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="14dp"
-        android:text="Дата запуска: "
-        android:textSize="16dp"
+        android:layout_marginTop="@dimen/margin_top_between_titles"
+        android:text="@string/Launch_date"
+        android:textSize="@dimen/text_size_mars"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewLanding" />
 
@@ -67,10 +67,9 @@
         android:id="@+id/textViewLanding"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="9dp"
-        android:text="Дата приземления: "
-        android:textSize="16dp"
+        android:layout_marginTop="@dimen/margin_top_between_titles"
+        android:text="@string/Landing_date"
+        android:textSize="@dimen/text_size_mars"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewCamera" />
 

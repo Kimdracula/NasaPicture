@@ -46,11 +46,11 @@ class ApiBottomFragment : Fragment() {
                         .replace(R.id.containerApi, MarsFragment.newInstance()).commit()
                     true
                 }
-                R.id.action_meteors-> {
+                R.id.action_asteroids-> {
                     childFragmentManager.beginTransaction()
                         .replace(R.id.containerApi, AsteroidsFragment.newInstance()).commit()
                     true                }
-                R.id.action_moon -> {
+                R.id.action_earth -> {
                     childFragmentManager.beginTransaction()
                         .replace(R.id.containerApi, EarthFragment.newInstance()).commit()
                     true

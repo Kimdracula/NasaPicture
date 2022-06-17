@@ -16,6 +16,7 @@ import com.homework.nasapicture.databinding.FragmentAsteroidsBinding
 import com.homework.nasapicture.model.X20150907
 import com.homework.nasapicture.utils.ASTEROIDS_KEY_BUNDLE
 import com.homework.nasapicture.utils.Date
+import com.homework.nasapicture.utils.SERVER_ERROR
 import com.homework.nasapicture.viewmodel.AsteroidsState
 import com.homework.nasapicture.viewmodel.AsteroidsViewModel
 
@@ -63,7 +64,7 @@ class AsteroidsFragment : Fragment(), OnItemListClickListener {
             is AsteroidsState.Error -> {
                 with(binding) {
                     imageViewProgress.visibility = View.GONE
-                    Toast.makeText(requireContext(), "Что то пошло не так", Toast.LENGTH_LONG)
+                    Toast.makeText(requireContext(), SERVER_ERROR, Toast.LENGTH_LONG)
                         .show()
                 }
             }
@@ -74,7 +75,7 @@ class AsteroidsFragment : Fragment(), OnItemListClickListener {
                 binding.recycleList.adapter = myAdapter
             }
             else -> {
-                Toast.makeText(requireContext(), "Что то пошло не так", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), SERVER_ERROR, Toast.LENGTH_LONG).show()
             }
         }
     }
@@ -89,9 +90,9 @@ class AsteroidsFragment : Fragment(), OnItemListClickListener {
     }
 
     override fun onItemClick(asteroidsList: X20150907) {
-       requireActivity().supportFragmentManager.beginTransaction().replace(R.id.containerApi, AsteroidsDetailsFragment.newInstance(
+      requireActivity().supportFragmentManager.beginTransaction().replace(R.id.containerApi, AsteroidsDetailsFragment.newInstance(
            Bundle().apply {
                putParcelable(ASTEROIDS_KEY_BUNDLE,asteroidsList)
-    })).commit()
+    })).commitNowAllowingStateLoss()
 }
 }

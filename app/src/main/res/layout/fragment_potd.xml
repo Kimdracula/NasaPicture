@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="8dp"
-    tools:context=".ui.main.MainFragmentOld">
+    android:padding="@dimen/screen_padding">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabsGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal">
-
     </com.google.android.material.tabs.TabLayout>
 
 
@@ -57,9 +54,5 @@
     <include
         android:id="@+id/includeBottomSheet"
         layout="@layout/bottom_sheet">
-
     </include>
-
-
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

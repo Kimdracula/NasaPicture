@@ -29,4 +29,16 @@
     <string name="not_hazardous_asteroid_image">Not hazardous asteroid image</string>
     <string name="title_asteroid">title_asteroid</string>
     <string name="asteroid_hazard_image">Asteroid Hazard Image</string>
+    <string name="daily_photo">Фото дня</string>
+    <string name="mars">Марс</string>
+    <string name="earth">Земля</string>
+    <string name="asteroids">Астеройды</string>
+    <string name="settings_title">Настройки</string>
+    <string name="imageViewProgress">imageViewProgress</string>
+    <string name="Image_Description">Описание фото:</string>
+    <string name="Coordinates">Координаты:</string>
+    <string name="Camera">Камера:</string>
+    <string name="Launch_date">Дата запуска:</string>
+    <string name="Landing_date">Дата приземления:</string>
+    <string name="imgStatusHazardous">imgStatusHazardous</string>
 </resources>

@@ -21,7 +21,8 @@
         android:layout_height="105dp"
         app:layout_anchor="@+id/nasaPictureImageView"
         app:layout_anchorGravity="center"
-        tools:src="@drawable/ic_progress" />
+        tools:src="@drawable/ic_progress"
+        android:contentDescription="@string/imageViewProgress"/>
 
     <include
         android:id="@+id/includeBottomSheet"

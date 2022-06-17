@@ -2,25 +2,25 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/action_picture_of_the_day"
-        android:icon="@drawable/ic_mars"
-        android:title="Фото дня" />
+        android:icon="@drawable/camera_roll"
+        android:title="@string/daily_photo" />
     <item
         android:id="@+id/action_mars"
         android:icon="@drawable/ic_mars"
-        android:title="Марс" />
+        android:title="@string/mars" />
 
     <item
-        android:id="@+id/action_moon"
-        android:icon="@drawable/ic_mars"
-        android:title="Луна" />
+        android:id="@+id/action_earth"
+        android:icon="@drawable/globe_line"
+        android:title="@string/earth" />
 
     <item
-        android:id="@+id/action_meteors"
-        android:icon="@drawable/ic_mars"
-        android:title="Метеориты" />
+        android:id="@+id/action_asteroids"
+        android:icon="@drawable/asteroid"
+        android:title="@string/asteroids" />
 
     <item
         android:id="@+id/action_settings"
         android:icon="@drawable/settings_icon"
-        android:title="Настройки" />
+        android:title="@string/settings_title" />
 </menu>

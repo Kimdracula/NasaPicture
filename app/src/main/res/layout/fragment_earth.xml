@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="8dp"
+    android:padding="@dimen/screen_padding"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintStart_toStartOf="parent">
 
     <DatePicker
         android:id="@+id/datePicker"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="@dimen/datePicket_hight"
         android:calendarViewShown="false"
         android:datePickerMode="spinner"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,21 +35,22 @@
         android:id="@+id/imageViewProgress"
         android:layout_width="105dp"
         android:layout_height="105dp"
-        android:layout_marginStart="150dp"
+        android:layout_marginStart="146dp"
         android:layout_marginTop="128dp"
         app:layout_anchor="@+id/earthPictureImageView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/datePicker"
-        tools:src="@drawable/ic_progress" />
+        tools:src="@drawable/ic_progress"
+        android:contentDescription="@string/imageViewProgress" />
 
     <TextView
         android:id="@+id/textViewCaptionHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="15dp"
-        android:text="Описание фото: "
-        android:textSize="16dp"
+
+        android:layout_marginTop="@dimen/margin_top_between_titles"
+        android:text="@string/Image_Description"
+        android:textSize="@dimen/text_size_earth"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/earthPictureImageView" />
 
@@ -57,10 +58,9 @@
         android:id="@+id/textViewCaption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:text="lalalala"
-        android:textSize="16dp"
+        android:layout_marginTop="@dimen/margin_top_after_title"
+        tools:text="lalalala"
+        android:textSize="@dimen/text_size_earth"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewCaptionHeader" />
 
@@ -68,10 +68,9 @@
         android:id="@+id/textViewCoordinatesHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:text="Координаты: "
-        android:textSize="16dp"
+        android:layout_marginTop="@dimen/margin_top_between_titles"
+        android:text="@string/Coordinates"
+        android:textSize="@dimen/text_size_earth"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewCaption" />
 
@@ -79,10 +78,9 @@
         android:id="@+id/textViewCoordinates"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:text="100500"
-        android:textSize="16dp"
+        android:layout_marginTop="@dimen/margin_top_after_title"
+        tools:text="100500"
+        android:textSize="@dimen/text_size_earth"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewCoordinatesHeader" />
 
