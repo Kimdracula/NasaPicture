@@ -60,7 +60,9 @@ class TodayFragment:Fragment() {
             is POTDState.Success -> {
                 with(binding) {
                     imageViewProgress.visibility = View.GONE
-                    nasaPictureImageView.load(it.pictureOfTheDay.url)
+                    if (it.pictureOfTheDay.mediaType == "video")
+                    {nasaPictureImageView.load(R.drawable.no_image)}else{
+                    nasaPictureImageView.load(it.pictureOfTheDay.url)}
                     includeBottomSheet.bottomSheetDescriptionHeader.text = it.pictureOfTheDay.title
                     includeBottomSheet.bottomSheetDescription.text = it.pictureOfTheDay.explanation
                 }

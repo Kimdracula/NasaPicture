@@ -73,6 +73,8 @@
         <item
             name="shapeAppearanceSmallComponent">@style/AppShapeAppearance.SmallComponent</item>
         <item name="tabStyle">@style/MyTabStyle</item>
+        <item name="bottomNavigationStyle">@style/MyBottomNavigationStyle</item>
+
 
     </style>
 

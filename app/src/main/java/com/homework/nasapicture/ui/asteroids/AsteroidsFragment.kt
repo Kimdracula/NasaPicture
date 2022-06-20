@@ -90,9 +90,11 @@ class AsteroidsFragment : Fragment(), OnItemListClickListener {
     }
 
     override fun onItemClick(asteroidsList: X20150907) {
-        requireActivity().supportFragmentManager.beginTransaction().replace(R.id.containerApi, AsteroidsDetailsFragment.newInstance(
-            Bundle().apply {
-                putParcelable(ASTEROIDS_KEY_BUNDLE,asteroidsList)
-            })).commitNowAllowingStateLoss()
+        parentFragmentManager.beginTransaction().replace(
+            R.id.containerApi, AsteroidsDetailsFragment.newInstance(
+                Bundle().apply {
+                    putParcelable(ASTEROIDS_KEY_BUNDLE, asteroidsList)
+                })
+        ).commit()
     }
 }

@@ -25,7 +25,8 @@ class ApiBottomFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentApiBottomBinding.inflate(inflater, container, false)
-        childFragmentManager.beginTransaction().replace(R.id.containerApi, POTDFragment.newInstance()).commitNowAllowingStateLoss()
+        childFragmentManager.beginTransaction()
+            .replace(R.id.containerApi, POTDFragment.newInstance()).commitNowAllowingStateLoss()
         return binding.root
     }
 
@@ -37,7 +38,7 @@ class ApiBottomFragment : Fragment() {
             when (item.itemId) {
 
                 R.id.action_picture_of_the_day -> {
-                   childFragmentManager.beginTransaction()
+                    childFragmentManager.beginTransaction()
                         .replace(R.id.containerApi, POTDFragment.newInstance()).commit()
                     true
                 }
@@ -46,10 +47,11 @@ class ApiBottomFragment : Fragment() {
                         .replace(R.id.containerApi, MarsFragment.newInstance()).commit()
                     true
                 }
-                R.id.action_asteroids-> {
+                R.id.action_asteroids -> {
                     childFragmentManager.beginTransaction()
                         .replace(R.id.containerApi, AsteroidsFragment.newInstance()).commit()
-                    true                }
+                    true
+                }
                 R.id.action_earth -> {
                     childFragmentManager.beginTransaction()
                         .replace(R.id.containerApi, EarthFragment.newInstance()).commit()

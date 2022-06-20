@@ -20,7 +20,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="60dp"
         android:hint="@string/search_in_wiki"
         app:counterEnabled="true"
         app:counterMaxLength="20"
@@ -43,16 +43,12 @@
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_height="470dp"
+        android:layout_marginTop="140dp"
         android:layout_gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <include
-        android:id="@+id/includeBottomSheet"
-        layout="@layout/bottom_sheet">
-    </include>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

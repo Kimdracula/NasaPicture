@@ -15,7 +15,7 @@ import com.homework.nasapicture.viewmodel.AsteroidDetailsViewModel
 import com.homework.nasapicture.viewmodel.AsteroidsDetailsState
 
 
-class AsteroidsDetailsFragment: Fragment() {
+class AsteroidsDetailsFragment : Fragment() {
     private var _binding: AsteroidDetailsFragmentBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: AsteroidDetailsViewModel
@@ -38,7 +38,7 @@ class AsteroidsDetailsFragment: Fragment() {
         arguments?.getParcelable<X20150907>(ASTEROIDS_KEY_BUNDLE)?.let { it ->
             viewModel = ViewModelProvider(this)[AsteroidDetailsViewModel::class.java]
             viewModel.getAsteroidsDetails(it)
-            viewModel.getLiveData().observe(viewLifecycleOwner){
+            viewModel.getLiveData().observe(viewLifecycleOwner) {
                 renderData(it)
             }
         }
@@ -46,30 +46,33 @@ class AsteroidsDetailsFragment: Fragment() {
 
     private fun renderData(it: AsteroidsDetailsState?) {
         when (it) {
-            is AsteroidsDetailsState.Loading -> {
-                //    binding.imageViewProgress.load(R.drawable.progress_animation)
-            }
+
             is AsteroidsDetailsState.Error -> {
                 with(binding) {
-                    // imageViewProgress.visibility = View.GONE
-                    binding.imageViewAsteroidStatus.load(R.drawable.error_image)
+                    imageViewAsteroidStatus.load(R.drawable.error_image)
                 }
             }
             is AsteroidsDetailsState.Success -> {
                 with(binding) {
-                    if (it.asteroids.isPotentiallyHazardousAsteroid){
-                        imageViewAsteroidStatus.load(R.drawable.asteroid_hazardous)}
-                    else{imageViewAsteroidStatus.load(R.drawable.asteroid_safe)}
-
-                    textViewCloseApproachDate.text = it.asteroids.closeApproachData[0].closeApproachDateFull
+                    if (it.asteroids.isPotentiallyHazardousAsteroid) {
+                        imageViewAsteroidStatus.load(R.drawable.asteroid_hazardous)
+                    } else {
+                        imageViewAsteroidStatus.load(R.drawable.asteroid_safe)
+                    }
+                    textViewCloseApproachDate.text =
+                        it.asteroids.closeApproachData[0].closeApproachDateFull
                     textViewAbsoluteMagnitude.text = it.asteroids.absoluteMagnitudeH.toString()
-                    textViewEstimatedDiameter.text = it.asteroids.estimatedDiameter.kilometers.toString()
-                    textViewRelativeVelocity.text = it.asteroids.closeApproachData[0].relativeVelocity.kilometersPerHour
-                    textViewDistanceFromEarth.text=it.asteroids.closeApproachData[0].missDistance.kilometers
+                    textViewEstimatedDiameter.text =
+                        it.asteroids.estimatedDiameter.kilometers.toString()
+                    textViewRelativeVelocity.text =
+                        it.asteroids.closeApproachData[0].relativeVelocity.kilometersPerHour
+                    textViewDistanceFromEarth.text =
+                        it.asteroids.closeApproachData[0].missDistance.kilometers
                 }
             }
         }
     }
+
     companion object {
 
         fun newInstance(bundle: Bundle): AsteroidsDetailsFragment {

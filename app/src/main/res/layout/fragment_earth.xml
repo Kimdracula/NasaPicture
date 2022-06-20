@@ -8,15 +8,6 @@
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintStart_toStartOf="parent">
 
-    <DatePicker
-        android:id="@+id/datePicker"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/datePicket_hight"
-        android:calendarViewShown="false"
-        android:datePickerMode="spinner"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <com.homework.nasapicture.utils.EquilateralImageView
         android:id="@+id/earthPictureImageView"
@@ -36,12 +27,12 @@
         android:layout_width="105dp"
         android:layout_height="105dp"
         android:layout_marginStart="146dp"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="300dp"
+        android:contentDescription="@string/imageViewProgress"
         app:layout_anchor="@+id/earthPictureImageView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/datePicker"
-        tools:src="@drawable/ic_progress"
-        android:contentDescription="@string/imageViewProgress" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_progress" />
 
     <TextView
         android:id="@+id/textViewCaptionHeader"

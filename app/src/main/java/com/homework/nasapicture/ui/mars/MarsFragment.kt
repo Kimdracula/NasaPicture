@@ -34,13 +34,11 @@ class MarsFragment : Fragment() {
             renderData(it)
         }
         val date = Date()
-        viewModel.sendRequest(date.formattedYesterday, "spirit")
+        viewModel.sendRequest(date.formattedNow, "spirit")
 
         binding.datePicker.setOnDateChangedListener { datePicker, year, month, day ->
             viewModel.sendRequest("$year-${month + 1}-$day", "spirit")
         }
-
-
     }
 
 
@@ -64,7 +62,6 @@ class MarsFragment : Fragment() {
                         binding.marsPictureImageView.load(R.drawable.error_image)
                     } else {
                         marsPictureImageView.load(it.marsRoverPhotos.photos[0].imgSrc)}
-
 
                     if (it.marsRoverPhotos.photos[0].camera.fullName != null) {
                         textViewCamera.text =
