@@ -1,16 +1,16 @@
 package com.homework.nasapicture.viewmodel
 
-import AsteroidsDTO
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.homework.nasapicture.model.AsteroidsDTO
 import com.homework.nasapicture.model.Retrofit
 import com.homework.nasapicture.utils.API_KEY_ERROR
-import com.homework.nasapicture.utils.Date
 import com.homework.nasapicture.utils.SERVER_ERROR
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 
 class AsteroidsViewModel(
     private val liveData: MutableLiveData<AsteroidsState> = MutableLiveData(),
@@ -21,18 +21,12 @@ class AsteroidsViewModel(
         return liveData
     }
 
-    fun sendRequest() {
+    fun sendRequest(date: String) {
         liveData.postValue(AsteroidsState.Loading)
         if (com.homework.nasapicture.BuildConfig.NASA_API_KEY.isNullOrBlank()) {
             liveData.postValue(AsteroidsState.Error(Throwable(API_KEY_ERROR)))
         } else {
-            val myDate = Date()
-
-            asteroids.getRetrofit().getAsteroids(
-                myDate.formattedDby,
-                myDate.formattedNow,
-                com.homework.nasapicture.BuildConfig.NASA_API_KEY
-            )
+            asteroids.getRetrofit().getAsteroids("2015-09-07","2015-09-08",com.homework.nasapicture.BuildConfig.NASA_API_KEY)
                 .enqueue(callback)
         }
     }

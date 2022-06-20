@@ -9,6 +9,7 @@ import com.homework.nasapicture.R
 import com.homework.nasapicture.databinding.FragmentEarthBinding
 import androidx.lifecycle.ViewModelProvider
 import coil.load
+import com.homework.nasapicture.BuildConfig
 import com.homework.nasapicture.utils.Date
 import com.homework.nasapicture.viewmodel.EarthState
 import com.homework.nasapicture.viewmodel.EarthViewModel
@@ -18,7 +19,6 @@ class EarthFragment : Fragment() {
     private var _binding: FragmentEarthBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: EarthViewModel
-    private var datePath = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,13 +31,9 @@ class EarthFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this)[EarthViewModel::class.java]
-
-        binding.datePicker.setOnDateChangedListener { datePicker, year, month, day ->
-            viewModel.sendRequest("$year-${month + 1}-$day")
-            datePath = "$year/${month + 1}/$day"
-            viewModel.getLiveData().observe(viewLifecycleOwner) {
-                renderData(it)
-            }
+        viewModel.sendRequest()
+        viewModel.getLiveData().observe(viewLifecycleOwner) {
+            renderData(it)
         }
 
     }
@@ -55,20 +51,20 @@ class EarthFragment : Fragment() {
             is EarthState.Success -> {
                 with(binding) {
                     imageViewProgress.visibility = View.GONE
-                    if (it.earthPhotos[0].image == null) {
-                        earthPictureImageView.load(R.drawable.error_image)
-                    } else {
-                        earthPictureImageView.load("https://api.nasa.gov/EPIC/archive/natural/${datePath}/png/${it.earthPhotos[0].image}" +
-                                ".png?api_key=${com.homework.nasapicture.BuildConfig.NASA_API_KEY}")
-                        textViewCaption.text = it.earthPhotos[0].caption
+                    val strDate = it.earthPhotos.last().date.split(" ").first()
+                    val image = it.earthPhotos.last().image
+                    val url = "https://api.nasa.gov/EPIC/archive/natural/" +
+                            strDate.replace("-","/",true) +
+                            "/png/" +
+                            "$image" +
+                            ".png?api_key=${BuildConfig.NASA_API_KEY}"
+                    earthPictureImageView.load(url)
+                        textViewCaption.text = it.earthPhotos.last().caption
                         textViewCoordinates.text =
-                            ("lat = ${it.earthPhotos[0].centroidCoordinates.lat}; lon = ${it.earthPhotos[0].centroidCoordinates.lon}")
+                            ("lat = ${it.earthPhotos.last().centroidCoordinates.lat}; lon = ${it.earthPhotos.last().centroidCoordinates.lon}")
                     }
-
-
                 }
             }
-        }
     }
 
     companion object {

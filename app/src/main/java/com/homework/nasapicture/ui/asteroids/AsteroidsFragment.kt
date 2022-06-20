@@ -1,6 +1,5 @@
 package com.homework.nasapicture.ui.asteroids
 
-import AsteroidsDTO
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
 import com.homework.nasapicture.R
 import com.homework.nasapicture.databinding.FragmentAsteroidsBinding
+import com.homework.nasapicture.model.X20150907
 import com.homework.nasapicture.utils.ASTEROIDS_KEY_BUNDLE
 import com.homework.nasapicture.utils.Date
 import com.homework.nasapicture.utils.SERVER_ERROR
@@ -41,7 +41,7 @@ class AsteroidsFragment : Fragment(), OnItemListClickListener {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this)[AsteroidsViewModel::class.java]
         val date = Date()
-        viewModel.sendRequest()
+        viewModel.sendRequest(date.formattedNow)
         viewModel.getLiveData().observe(viewLifecycleOwner) {
             renderData(it)
         }
@@ -71,7 +71,7 @@ class AsteroidsFragment : Fragment(), OnItemListClickListener {
             is AsteroidsState.Success -> {
                 binding.imageViewProgress.visibility = View.GONE
                 val myAdapter = AsteroidsRecycleAdapter(this)
-                myAdapter.setAsteroidsList(it.asteroids)
+                myAdapter.setAsteroidsList(it.asteroids.nearEarthObjects.x20150907)
                 binding.recycleList.adapter = myAdapter
             }
             else -> {
@@ -89,10 +89,10 @@ class AsteroidsFragment : Fragment(), OnItemListClickListener {
         _binding = null
     }
 
-    override fun onItemClick(asteroidsList: AsteroidsDTO) {
-      requireActivity().supportFragmentManager.beginTransaction().replace(R.id.containerApi, AsteroidsDetailsFragment.newInstance(
-           Bundle().apply {
-               putParcelable(ASTEROIDS_KEY_BUNDLE,asteroidsList)
-    })).commitNowAllowingStateLoss()
-}
+    override fun onItemClick(asteroidsList: X20150907) {
+        requireActivity().supportFragmentManager.beginTransaction().replace(R.id.containerApi, AsteroidsDetailsFragment.newInstance(
+            Bundle().apply {
+                putParcelable(ASTEROIDS_KEY_BUNDLE,asteroidsList)
+            })).commitNowAllowingStateLoss()
+    }
 }

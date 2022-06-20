@@ -20,13 +20,13 @@ class EarthViewModel(
         return liveData
     }
 
-    fun sendRequest(date: String) {
+    fun sendRequest() {
         liveData.postValue(EarthState.Loading)
         if (com.homework.nasapicture.BuildConfig.NASA_API_KEY.isNullOrBlank()) {
             liveData.postValue(EarthState.Error(Throwable(API_KEY_ERROR)))
         } else {
             earthPhotos.getRetrofit()
-                .getEarthImages(date, com.homework.nasapicture.BuildConfig.NASA_API_KEY)
+                .getEarthImages(com.homework.nasapicture.BuildConfig.NASA_API_KEY)
                 .enqueue(callback)
         }
     }
