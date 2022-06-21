@@ -13,8 +13,7 @@
         android:id="@+id/earthPictureImageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -38,7 +37,6 @@
         android:id="@+id/textViewCaptionHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:layout_marginTop="@dimen/margin_top_between_titles"
         android:text="@string/Image_Description"
         android:textSize="@dimen/text_size_earth"

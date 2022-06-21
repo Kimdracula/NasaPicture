@@ -38,15 +38,13 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/close_approach_data_title"
-                    android:textColor="@color/default_text_color" />
+                    android:text="@string/close_approach_data_title" />
 
                 <TextView
                     android:id="@+id/textViewCloseApproachDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_top_after_title"
-                    android:textColor="@color/default_text_color"
                     tools:text="2020-02-01" />
             </LinearLayout>
 
@@ -67,15 +65,13 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/absolute_magnitude_title"
-                        android:textColor="@color/default_text_color" />
+                        android:text="@string/absolute_magnitude_title" />
 
                     <TextView
                         android:id="@+id/textViewAbsoluteMagnitude"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_top_after_title"
-                        android:textColor="@color/default_text_color"
                         tools:text="25.126 au" />
                 </LinearLayout>
 
@@ -86,45 +82,40 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_top_between_titles"
-                android:text="@string/estimated_diameter_title"
-                android:textColor="@color/default_text_color" />
+                android:text="@string/estimated_diameter_title" />
 
             <TextView
                 android:id="@+id/textViewEstimatedDiameter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_top_after_title"
-                android:textColor="@color/default_text_color"
+
                 tools:text="0.82 km" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_top_between_titles"
-                android:text="@string/relative_velocity_title"
-                android:textColor="@color/default_text_color" />
+                android:text="@string/relative_velocity_title" />
 
             <TextView
                 android:id="@+id/textViewRelativeVelocity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_top_after_title"
-                android:textColor="@color/default_text_color"
                 tools:text="11.9 km/s" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_top_between_titles"
-                android:text="@string/distance_from_earth_title"
-                android:textColor="@color/default_text_color" />
+                android:text="@string/distance_from_earth_title" />
 
             <TextView
                 android:id="@+id/textViewDistanceFromEarth"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_top_after_title"
-                android:textColor="@color/default_text_color"
                 tools:text="0.0924 au" />
 
         </LinearLayout>
