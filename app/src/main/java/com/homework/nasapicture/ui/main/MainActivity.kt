@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
     fun getNewTheme(): Int {
         val sharedPreferences = getSharedPreferences(KEY_SP, MODE_PRIVATE)
-        return sharedPreferences.getInt(KEY_NEW_THEME, -1)
+        return sharedPreferences.getInt(KEY_NEW_THEME, R.style.Theme_Dark)
     }
 
     fun setNewTheme(currentTheme: Int) {
