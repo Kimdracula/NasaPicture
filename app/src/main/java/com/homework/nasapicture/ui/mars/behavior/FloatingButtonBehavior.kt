@@ -7,8 +7,9 @@ import android.view.View
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.google.android.material.appbar.AppBarLayout
 import kotlin.math.abs
+import kotlin.math.log
 
-class FloatingButtonBehavior (
+class FloatingButtonBehavior(
     context: Context,
     attrs: AttributeSet? = null
 ) : CoordinatorLayout.Behavior<View>(context, attrs) {
@@ -28,12 +29,17 @@ class FloatingButtonBehavior (
         child: View,
         dependency: View
     ): Boolean {
-        Log.d("", "")
 
         val bar = dependency as AppBarLayout
-        child.alpha = 1 - abs(2 * bar.y) / bar.height.toFloat()
-        child.x =
-            (bar.width.toFloat() - child.width.toFloat()) * (1 - abs(2 * bar.y) / bar.height.toFloat())
+        child.alpha = 1 - abs(1.1 * bar.y).toFloat() / bar.height.toFloat()
+        child.x = bar.width * 0.2.toFloat() + bar.width - bar.height + bar.y * 2
+        child.y = bar.height*0.8.toFloat() + bar.y
+        Log.d("!!!", child.x.toString())
+        Log.d("&&&", child.y.toString())
+        Log.d("@@@", child.alpha.toString())
+
+
+
 
         return super.onDependentViewChanged(parent, child, dependency)
     }

@@ -46,7 +46,8 @@
         android:src="@drawable/ic_like"
         app:elevation="6dp"
         app:layout_anchor="@id/appbar"
-        app:layout_anchorGravity="bottom|end">
+        app:layout_anchorGravity="bottom|end"
+        app:layout_behavior=".ui.mars.behavior.FloatingButtonBehavior">
 
     </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
