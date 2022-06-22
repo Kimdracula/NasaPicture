@@ -10,12 +10,13 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayoutMediator
 import com.homework.nasapicture.R
 import com.homework.nasapicture.databinding.FragmentPotdBinding
+import com.homework.nasapicture.databinding.FragmentPotdStartBinding
 import com.homework.nasapicture.utils.WIKI_URL
 
 
 class POTDFragment : Fragment() {
 
-    private var _binding: FragmentPotdBinding? = null
+    private var _binding: FragmentPotdStartBinding? = null
     private val binding get() = _binding!!
 
 
@@ -23,7 +24,7 @@ class POTDFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentPotdBinding.inflate(inflater, container, false)
+        _binding = FragmentPotdStartBinding.inflate(inflater, container, false)
         return binding.root
     }
 
