@@ -26,10 +26,8 @@ class NestedBehavior (
             child: View,
             dependency: View
         ): Boolean {
-            Log.d("", "")
-
             val bar = dependency as AppBarLayout
-            child.y = 0 + bar.height.toFloat() + bar.y
+            child.y = bar.height.toFloat() + bar.y/2
 
             return super.onDependentViewChanged(parent, child, dependency)
         }

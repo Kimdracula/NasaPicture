@@ -16,7 +16,7 @@
             android:id="@+id/collapsing_toolbar_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            app:layout_scrollFlags="scroll"
             app:toolbarId="@+id/toolbar">
 
             <androidx.appcompat.widget.Toolbar
@@ -82,13 +82,15 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                app:contentPaddingLeft="8dp"
                 android:elevation="2dp">
 
                 <TextView
                     android:id="@+id/textViewCamera"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="10dp"
                     android:text="@string/Camera"
                     android:textSize="@dimen/text_size_mars" />
 
@@ -106,7 +108,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="80dp"
                     android:text="@string/Landing_date"
-                    android:textSize="@dimen/text_size_mars" />
+                    android:textSize="@dimen/text_size_mars"
+                    android:layout_marginBottom="10dp"/>
 
             </androidx.cardview.widget.CardView>
         </LinearLayout>
