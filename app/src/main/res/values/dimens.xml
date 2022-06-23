@@ -10,4 +10,9 @@
     <dimen name="recycle_asteroid_text_size">16sp</dimen>
     <dimen name="side_margin_recycle_asteroid">8dp</dimen>
     <dimen name="margin_top_asteroid_description">30dp</dimen>
+    <dimen name="margin_bottom_wiki_button">15dp</dimen>
+    <dimen name="margin_end_wiki_button">8dp</dimen>
+    <dimen name="viewpager_layout_height">470dp</dimen>
+    <dimen name="viewpager_margin_top">140dp</dimen>
+    <dimen name="textInputLayout_margin_top">60dp</dimen>
 </resources>

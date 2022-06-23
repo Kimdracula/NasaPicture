@@ -6,5 +6,16 @@
         motion:duration="1000">
         <OnClick motion:targetId="@id/wiki_button" />
     </Transition>
+
+    <Transition
+        motion:constraintSetStart="@layout/fragment_potd"
+        motion:constraintSetEnd="@layout/fragment_potd_start"
+        motion:duration="1000">
+        <OnSwipe
+            motion:touchAnchorId="@id/input_layout"
+            motion:touchAnchorSide="left"
+            motion:dragDirection="dragRight"/>
+    </Transition>
+
 </MotionScene>
 
