@@ -7,12 +7,12 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="blue_material">#5C6BC0</color>
     <color name="gray">#585960</color>
     <color name="dark_gray">#48484C</color>
     <color name="yellow">#FFCA28</color>
     <color name="coral">#EF5350</color>
     <color name="app_background">#010613</color>
     <color name="default_text_color">#FFFFFF</color>
+    <color name ="light_gray">#8F9193</color>
 
 </resources>
