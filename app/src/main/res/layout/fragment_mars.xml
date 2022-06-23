@@ -53,8 +53,8 @@
 
     <ImageView
         android:id="@+id/imageViewProgress"
-        android:layout_width="105dp"
-        android:layout_height="105dp"
+        android:layout_width="@dimen/progress_image_size"
+        android:layout_height="@dimen/progress_image_size"
         android:layout_gravity="center"
         android:contentDescription="@string/imageViewProgress"
         tools:src="@drawable/ic_progress" />
@@ -70,8 +70,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="30dp">
+            android:layout_marginTop="30dp"
+            android:orientation="vertical">
 
             <com.homework.nasapicture.utils.EquilateralImageView
                 android:id="@+id/marsPictureImageView"
@@ -83,23 +83,25 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                app:contentPaddingLeft="8dp"
-                android:elevation="2dp">
+                android:layout_marginTop="@dimen/cardView_margin_top"
+                android:elevation="2dp"
+                app:contentPaddingBottom="@dimen/cardView_content_padding_bottom"
+                app:contentPaddingLeft="@dimen/cardView_content_padding_left"
+                app:contentPaddingTop="@dimen/cardView_content_padding_top">
 
                 <TextView
                     android:id="@+id/textViewCamera"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:text="@string/Camera"
-                    android:textSize="@dimen/text_size_mars" />
+                    android:textSize="@dimen/text_size_mars"
+                    app:layout_constraintVertical_chainStyle="packed" />
 
                 <TextView
                     android:id="@+id/textViewLaunch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="@dimen/cardView_textview_margin_top30"
                     android:text="@string/Launch_date"
                     android:textSize="@dimen/text_size_mars" />
 
@@ -107,10 +109,9 @@
                     android:id="@+id/textViewLanding"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="80dp"
+                    android:layout_marginTop="@dimen/cardView_textview_margin_top60"
                     android:text="@string/Landing_date"
-                    android:textSize="@dimen/text_size_mars"
-                    android:layout_marginBottom="10dp"/>
+                    android:textSize="@dimen/text_size_mars" />
 
             </androidx.cardview.widget.CardView>
         </LinearLayout>

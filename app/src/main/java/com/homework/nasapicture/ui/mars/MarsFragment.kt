@@ -34,11 +34,12 @@ class MarsFragment : Fragment() {
             renderData(it)
         }
         val date = Date()
-        viewModel.sendRequest(date.formattedNow, "spirit")
-
-        binding.datePicker.setOnDateChangedListener { datePicker, year, month, day ->
+        viewModel.sendRequest(date.formattedYesterday, "spirit")
+        with(binding.datePicker){
+        updateDate(date.current.year-2, date.current.dayOfMonth+1, date.current.dayOfYear-1)
+        setOnDateChangedListener { datePicker, year, month, day ->
             viewModel.sendRequest("$year-${month + 1}-$day", "spirit")
-        }
+        }}
     }
 
 

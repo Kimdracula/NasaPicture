@@ -15,8 +15,8 @@
 
     <ImageView
         android:id="@+id/imageViewProgress"
-        android:layout_width="105dp"
-        android:layout_height="105dp"
+        android:layout_width="@dimen/progress_image_size"
+        android:layout_height="@dimen/progress_image_size"
         app:layout_anchor="@+id/nasaPictureImageView"
         app:layout_anchorGravity="center"
         tools:src="@drawable/ic_progress"

@@ -13,6 +13,13 @@
     <dimen name="margin_bottom_wiki_button">15dp</dimen>
     <dimen name="margin_end_wiki_button">8dp</dimen>
     <dimen name="viewpager_layout_height">470dp</dimen>
-    <dimen name="viewpager_margin_top">140dp</dimen>
+    <dimen name="viewpager_margin_top">50dp</dimen>
     <dimen name="textInputLayout_margin_top">60dp</dimen>
+    <dimen name="progress_image_size">105dp</dimen>
+    <dimen name="cardView_margin_top">30dp</dimen>
+    <dimen name="cardView_content_padding_left">8dp</dimen>
+    <dimen name="cardView_content_padding_top">10dp</dimen>
+    <dimen name="cardView_content_padding_bottom">10dp</dimen>
+    <dimen name="cardView_textview_margin_top30">30dp</dimen>
+    <dimen name="cardView_textview_margin_top60">60dp</dimen>
 </resources>

@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter
 
 class Date {
 
-    private val current: LocalDateTime = LocalDateTime.now()
+  val current: LocalDateTime = LocalDateTime.now()
     private val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
     val formattedNow = current.format(formatter)
     val yesterday = current.minusDays(1)

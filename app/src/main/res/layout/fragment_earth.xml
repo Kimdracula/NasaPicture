@@ -13,9 +13,9 @@
         android:id="@+id/earthPictureImageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -24,21 +24,21 @@
 
     <ImageView
         android:id="@+id/imageViewProgress"
-        android:layout_width="105dp"
-        android:layout_height="105dp"
-        android:layout_marginStart="146dp"
-        android:layout_marginTop="300dp"
+        android:layout_width="@dimen/progress_image_size"
+        android:layout_height="@dimen/progress_image_size"
         android:contentDescription="@string/imageViewProgress"
         app:layout_anchor="@+id/earthPictureImageView"
+        app:layout_constraintBottom_toBottomOf="@+id/earthPictureImageView"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/earthPictureImageView"
+
         tools:src="@drawable/ic_progress" />
 
     <TextView
         android:id="@+id/textViewCaptionHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:layout_marginTop="@dimen/margin_top_between_titles"
         android:text="@string/Image_Description"
         android:textSize="@dimen/text_size_earth"
@@ -50,10 +50,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_top_after_title"
-        tools:text="lalalala"
         android:textSize="@dimen/text_size_earth"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewCaptionHeader" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewCaptionHeader"
+        tools:text="lalalala" />
 
     <TextView
         android:id="@+id/textViewCoordinatesHeader"
@@ -70,9 +70,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_top_after_title"
-        tools:text="100500"
         android:textSize="@dimen/text_size_earth"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewCoordinatesHeader" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewCoordinatesHeader"
+        tools:text="100500" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
