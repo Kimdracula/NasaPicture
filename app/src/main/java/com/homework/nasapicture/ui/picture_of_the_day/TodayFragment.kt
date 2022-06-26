@@ -49,8 +49,7 @@ class TodayFragment : Fragment() {
         val date = Date()
         viewModel.sendRequest(date.formattedNow)
         setBottomSheetBehavior(binding.includeBottomSheet.bottomSheetContainer)
-        setImageScale()
-    }
+         }
 
     private fun setImageScale() {
         binding.nasaPictureImageView.setOnClickListener {
@@ -93,6 +92,7 @@ class TodayFragment : Fragment() {
                     includeBottomSheet.bottomSheetDescriptionHeader.text = it.pictureOfTheDay.title
                     includeBottomSheet.bottomSheetDescription.text = it.pictureOfTheDay.explanation
                 }
+                setImageScale()
             }
 
             else -> {

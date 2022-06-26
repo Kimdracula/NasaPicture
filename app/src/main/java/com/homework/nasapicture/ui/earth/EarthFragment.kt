@@ -5,17 +5,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
+import android.widget.ImageView
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.homework.nasapicture.R
 import com.homework.nasapicture.databinding.FragmentEarthBinding
 import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.homework.nasapicture.BuildConfig
 import com.homework.nasapicture.utils.Date
+import com.homework.nasapicture.utils.ImageScale
 import com.homework.nasapicture.viewmodel.EarthState
 import com.homework.nasapicture.viewmodel.EarthViewModel
 
 
 class EarthFragment : Fragment() {
+
+    var isImageClicked: Boolean = false
     private var _binding: FragmentEarthBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: EarthViewModel
@@ -63,8 +69,28 @@ class EarthFragment : Fragment() {
                         textViewCoordinates.text =
                             ("lat = ${it.earthPhotos.last().centroidCoordinates.lat}; lon = ${it.earthPhotos.last().centroidCoordinates.lon}")
                     }
+                setImageScale()
                 }
             }
+    }
+
+    private fun setImageScale() {
+        binding.earthPictureImageView.setOnClickListener {
+            with(binding) {
+                ImageScale().scale( earthPictureImageView, root)
+            }
+            isImageClicked = !isImageClicked
+            binding.earthPictureImageView.scaleType = if (isImageClicked) {
+                ImageView.ScaleType.CENTER_CROP
+            } else {
+                ImageView.ScaleType.CENTER_INSIDE
+            }
+            val params = (binding.earthPictureImageView.layoutParams as  ConstraintLayout.LayoutParams)
+            params.height = if(isImageClicked){
+                ConstraintLayout.LayoutParams.MATCH_PARENT}else{
+                ConstraintLayout.LayoutParams.WRAP_CONTENT}
+            binding.earthPictureImageView.layoutParams = params
+        }
     }
 
     companion object {

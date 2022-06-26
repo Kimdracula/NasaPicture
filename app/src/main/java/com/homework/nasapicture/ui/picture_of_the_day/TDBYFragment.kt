@@ -41,7 +41,7 @@ class TDBYFragment:Fragment() {
         val date = Date()
         viewModel.sendRequest(date.formattedDby)
         setBottomSheetBehavior(binding.includeBottomSheet.bottomSheetContainer)
-        setImageScale()
+
     }
 
     private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {
@@ -70,6 +70,7 @@ class TDBYFragment:Fragment() {
                       includeBottomSheet.bottomSheetDescriptionHeader.text = it.pictureOfTheDay.title
                       includeBottomSheet.bottomSheetDescription.text = it.pictureOfTheDay.explanation
                 }
+                setImageScale()
             }
 
             else -> {

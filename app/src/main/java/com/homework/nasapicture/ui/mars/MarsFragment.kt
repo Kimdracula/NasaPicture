@@ -4,17 +4,24 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
+import android.widget.ImageView
+import android.widget.LinearLayout
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.homework.nasapicture.R
 import com.homework.nasapicture.databinding.FragmentMarsBinding
 import com.homework.nasapicture.utils.Date
+import com.homework.nasapicture.utils.ImageScale
 import com.homework.nasapicture.viewmodel.MarsState
 import com.homework.nasapicture.viewmodel.MarsViewModel
 
 
 class MarsFragment : Fragment() {
+
+    var isImageClicked: Boolean = false
     private var _binding: FragmentMarsBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: MarsViewModel
@@ -78,9 +85,22 @@ class MarsFragment : Fragment() {
                         textViewLanding.text =
                             ("Дата посадки: ${it.marsRoverPhotos.photos[0].rover.landingDate}")
                     }
-
-
+                    setImageScale()
                 }
+            }
+        }
+    }
+
+    private fun setImageScale() {
+        binding.marsPictureImageView.setOnClickListener {
+            with(binding) {
+                ImageScale().scale( marsPictureImageView, root)
+            }
+            isImageClicked = !isImageClicked
+            binding.marsPictureImageView.scaleType = if (isImageClicked) {
+                ImageView.ScaleType.CENTER_CROP
+            } else {
+                ImageView.ScaleType.CENTER_INSIDE
             }
         }
     }
