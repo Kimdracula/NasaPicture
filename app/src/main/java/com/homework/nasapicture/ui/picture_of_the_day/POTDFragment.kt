@@ -6,7 +6,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnticipateOvershootInterpolator
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.fragment.app.Fragment
+import androidx.transition.ChangeBounds
+import androidx.transition.TransitionManager
 import com.google.android.material.tabs.TabLayoutMediator
 import com.homework.nasapicture.R
 import com.homework.nasapicture.databinding.FragmentPotdBinding
@@ -16,6 +20,7 @@ import com.homework.nasapicture.utils.WIKI_URL
 
 class POTDFragment : Fragment() {
 
+    var isImageClicked: Boolean = false
     private var _binding: FragmentPotdStartBinding? = null
     private val binding get() = _binding!!
 
@@ -33,6 +38,34 @@ class POTDFragment : Fragment() {
         binding.viewPager.adapter = ViewPagerAdapter(requireActivity())
         attachTabLayoutMediator()
         setInputLayoutIconClickAction()
+        setWikiAnimation()
+    }
+
+    private fun setWikiAnimation() {
+        binding.wikiButton.setOnClickListener {
+            val constraintSet = ConstraintSet()
+            constraintSet.clone(binding.constraintContainer)
+
+            val transition = ChangeBounds()
+            transition.interpolator = AnticipateOvershootInterpolator(10f)
+            transition.duration = 1000
+            TransitionManager.beginDelayedTransition(binding.constraintContainer,transition )
+
+            isImageClicked = !isImageClicked
+            if(isImageClicked){
+                constraintSet.connect(R.id.input_layout,
+                    ConstraintSet.LEFT,R.id.constraint_container,
+                    ConstraintSet.LEFT)
+            }else{
+                constraintSet.connect(R.id.input_layout,
+                    ConstraintSet.LEFT,R.id.constraint_container,
+                    ConstraintSet.RIGHT)
+            }
+            constraintSet.applyTo(binding.constraintContainer)
+
+            binding.wikiButton.alpha=0f
+
+        }
     }
 
     private fun attachTabLayoutMediator() {

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main"
+    android:id="@+id/potdMainContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/screen_padding">
@@ -13,10 +13,10 @@
         android:layout_gravity="center_horizontal">
     </com.google.android.material.tabs.TabLayout>
 
-<androidx.constraintlayout.motion.widget.MotionLayout
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/constraint_container"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:layoutDescription="@xml/fragment_potd_start_scene">
+    android:layout_height="wrap_content">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/wiki_button"
@@ -33,6 +33,7 @@
         android:id="@+id/input_layout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
+        app:layout_constraintWidth_percent="1"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/textInputLayout_margin_top"
         android:hint="@string/search_in_wiki"
@@ -41,7 +42,7 @@
         app:endIconCheckable="true"
         app:endIconDrawable="@drawable/wiki_icon"
         app:endIconMode="custom"
-        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintLeft_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -51,7 +52,7 @@
             android:inputType="text"
             android:textColorHint="#757575" />
     </com.google.android.material.textfield.TextInputLayout>
-</androidx.constraintlayout.motion.widget.MotionLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
