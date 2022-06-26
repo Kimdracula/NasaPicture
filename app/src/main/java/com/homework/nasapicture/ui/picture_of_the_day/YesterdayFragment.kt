@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -12,11 +13,14 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.homework.nasapicture.R
 import com.homework.nasapicture.databinding.FragmentYesterdayBinding
 import com.homework.nasapicture.utils.Date
+import com.homework.nasapicture.utils.ImageScale
 import com.homework.nasapicture.utils.UNKNOWN_ERROR
 import com.homework.nasapicture.viewmodel.POTDState
 import com.homework.nasapicture.viewmodel.MainViewModel
 
 class YesterdayFragment:Fragment() {
+
+    var isImageClicked: Boolean = false
     private var _binding: FragmentYesterdayBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: MainViewModel
@@ -37,7 +41,7 @@ class YesterdayFragment:Fragment() {
         val date = Date()
         viewModel.sendRequest(date.formattedYesterday)
         setBottomSheetBehavior(binding.includeBottomSheet.bottomSheetContainer)
-
+        setImageScale()
     }
 
     private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {
@@ -79,6 +83,19 @@ class YesterdayFragment:Fragment() {
         _binding = null
     }
 
+    private fun setImageScale() {
+        binding.nasaPictureImageView.setOnClickListener {
+            with(binding) {
+                ImageScale().scale(nasaPictureImageView, root)
+            }
+            isImageClicked = !isImageClicked
+            binding.nasaPictureImageView.scaleType = if (isImageClicked) {
+                ImageView.ScaleType.CENTER_CROP
+            } else {
+                ImageView.ScaleType.CENTER_INSIDE
+            }
+        }
+    }
 
     companion object {
         fun newInstance() = YesterdayFragment()
