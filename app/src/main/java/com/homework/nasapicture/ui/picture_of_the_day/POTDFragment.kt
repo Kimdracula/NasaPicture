@@ -63,7 +63,9 @@ class POTDFragment : Fragment() {
             }
             constraintSet.applyTo(binding.constraintContainer)
 
-            binding.wikiButton.alpha=0f
+            binding.wikiButton.animate()
+                .alpha(0f)
+                .duration= 1000
 
         }
     }

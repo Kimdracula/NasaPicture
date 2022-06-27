@@ -2,6 +2,7 @@ package com.homework.nasapicture.ui.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentTransaction.TRANSIT_FRAGMENT_FADE
 import com.homework.nasapicture.R
 import com.homework.nasapicture.utils.KEY_NEW_THEME
 import com.homework.nasapicture.utils.KEY_SP
@@ -16,6 +17,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
+                .setTransition(TRANSIT_FRAGMENT_FADE)
                 .replace(R.id.container, ApiBottomFragment.newInstance())
                 .commitNowAllowingStateLoss()
         }
