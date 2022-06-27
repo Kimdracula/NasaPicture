@@ -22,4 +22,13 @@
     <dimen name="cardView_content_padding_bottom">10dp</dimen>
     <dimen name="cardView_textview_margin_top30">30dp</dimen>
     <dimen name="cardView_textview_margin_top60">60dp</dimen>
+    <dimen name="option_text_margin_end">5dp</dimen>
+    <dimen name="option_container_padding_end">12dp</dimen>
+    <dimen name="option_container_padding_start">12dp</dimen>
+    <dimen name="option_one_container_padding_bottom">32dp</dimen>
+    <dimen name="option_two_container_padding_bottom">32dp</dimen>
+    <dimen name="fab_margin_end">10dp</dimen>
+    <dimen name="fab_margin_bottom">50dp</dimen>
+    <dimen name="fab_plus_margin_end">26dp</dimen>
+    <dimen name="fab_plus_margin_bottom">65dp</dimen>
 </resources>
