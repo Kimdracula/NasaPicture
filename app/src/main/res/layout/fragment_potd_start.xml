@@ -65,4 +65,79 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <LinearLayout
+        android:id="@+id/option_one_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:alpha="0"
+        android:orientation="horizontal"
+        android:paddingEnd="@dimen/option_container_padding_end"
+        android:paddingStart="@dimen/option_container_padding_start"
+        android:paddingBottom="@dimen/option_one_container_padding_bottom">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="@dimen/option_text_margin_end"
+            android:text="@string/option_1"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/ic_archive" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/option_two_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:alpha="0"
+        android:orientation="horizontal"
+        android:paddingEnd="@dimen/option_container_padding_end"
+        android:paddingStart="@dimen/option_container_padding_start"
+        android:paddingBottom="@dimen/option_two_container_padding_bottom">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="@dimen/option_text_margin_end"
+            android:text="@string/option_2"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            app:srcCompat="@drawable/ic_send" />
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="@dimen/fab_margin_end"
+        android:layout_marginBottom="@dimen/fab_margin_bottom"
+        android:elevation="5dp"
+        android:contentDescription="@string/floating_action_button" />
+
+    <ImageView
+        android:id="@+id/plusImageview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="@dimen/fab_plus_margin_end"
+        android:layout_marginBottom="@dimen/fab_plus_margin_bottom"
+        android:elevation="10dp"
+        app:srcCompat="@drawable/ic_plus_fab" />
+
+
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

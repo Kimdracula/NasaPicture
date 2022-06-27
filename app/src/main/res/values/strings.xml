@@ -41,4 +41,7 @@
     <string name="Launch_date">Дата запуска:</string>
     <string name="Landing_date">Дата приземления:</string>
     <string name="imgStatusHazardous">imgStatusHazardous</string>
+    <string name="floating_action_button">floatingActionButton</string>
+    <string name="option_1">Option 1</string>
+    <string name="option_2">Option 2</string>
 </resources>

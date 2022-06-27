@@ -89,8 +89,13 @@ class AsteroidsFragment : Fragment(), OnItemListClickListener {
         _binding = null
     }
 
+    @SuppressLint("PrivateResource")
     override fun onItemClick(asteroidsList: X20150907) {
-        parentFragmentManager.beginTransaction().replace(
+        parentFragmentManager.beginTransaction()
+            .setCustomAnimations(
+                com.google.android.material.R.anim.mtrl_bottom_sheet_slide_in,
+                com.google.android.material.R.anim.mtrl_bottom_sheet_slide_out)
+            .replace(
             R.id.containerApi, AsteroidsDetailsFragment.newInstance(
                 Bundle().apply {
                     putParcelable(ASTEROIDS_KEY_BUNDLE, asteroidsList)

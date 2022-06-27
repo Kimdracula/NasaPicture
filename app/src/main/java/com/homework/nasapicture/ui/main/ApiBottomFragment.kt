@@ -1,10 +1,13 @@
 package com.homework.nasapicture.ui.main
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.FragmentTransaction.TRANSIT_FRAGMENT_CLOSE
 import com.homework.nasapicture.R
 import com.homework.nasapicture.databinding.FragmentApiBottomBinding
 import com.homework.nasapicture.ui.mars.MarsFragment
@@ -31,6 +34,7 @@ class ApiBottomFragment : Fragment() {
     }
 
 
+    @SuppressLint("PrivateResource")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -38,28 +42,44 @@ class ApiBottomFragment : Fragment() {
             when (item.itemId) {
 
                 R.id.action_picture_of_the_day -> {
-                    childFragmentManager.beginTransaction()
+                    childFragmentManager.
+                    beginTransaction()
+                        .setCustomAnimations(
+                            com.google.android.material.R.anim.mtrl_bottom_sheet_slide_in,
+                        com.google.android.material.R.anim.mtrl_bottom_sheet_slide_out)
                         .replace(R.id.containerApi, POTDFragment.newInstance()).commit()
                     true
                 }
                 R.id.action_mars -> {
                     childFragmentManager.beginTransaction()
+                        .setCustomAnimations(
+                            com.google.android.material.R.anim.mtrl_bottom_sheet_slide_in,
+                            com.google.android.material.R.anim.mtrl_bottom_sheet_slide_out)
                         .replace(R.id.containerApi, MarsFragment.newInstance()).commit()
                     true
                 }
                 R.id.action_asteroids -> {
                     childFragmentManager.beginTransaction()
+                        .setCustomAnimations(
+                            com.google.android.material.R.anim.mtrl_bottom_sheet_slide_in,
+                            com.google.android.material.R.anim.mtrl_bottom_sheet_slide_out)
                         .replace(R.id.containerApi, AsteroidsFragment.newInstance()).commit()
                     true
                 }
                 R.id.action_earth -> {
                     childFragmentManager.beginTransaction()
+                        .setCustomAnimations(
+                            com.google.android.material.R.anim.mtrl_bottom_sheet_slide_in,
+                            com.google.android.material.R.anim.mtrl_bottom_sheet_slide_out)
                         .replace(R.id.containerApi, EarthFragment.newInstance()).commit()
                     true
                 }
 
                 R.id.action_settings -> {
                     childFragmentManager.beginTransaction()
+                        .setCustomAnimations(
+                            com.google.android.material.R.anim.mtrl_bottom_sheet_slide_in,
+                            com.google.android.material.R.anim.mtrl_bottom_sheet_slide_out)
                         .replace(R.id.containerApi, SettingsFragment.newInstance()).commit()
                     true
                 }
