@@ -4,22 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.transition.ChangeBounds
-import androidx.transition.ChangeImageTransform
-import androidx.transition.TransitionManager
-import androidx.transition.TransitionSet
 import coil.load
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.homework.nasapicture.R
 import com.homework.nasapicture.databinding.FragmentTodayBinding
 import com.homework.nasapicture.utils.Date
 import com.homework.nasapicture.utils.ImageScale
+import com.homework.nasapicture.utils.TextSpans
 import com.homework.nasapicture.utils.UNKNOWN_ERROR
 import com.homework.nasapicture.viewmodel.POTDState
 import com.homework.nasapicture.viewmodel.MainViewModel
@@ -89,8 +84,8 @@ class TodayFragment : Fragment() {
                     } else {
                         nasaPictureImageView.load(it.pictureOfTheDay.url)
                     }
-                    includeBottomSheet.bottomSheetDescriptionHeader.text = it.pictureOfTheDay.title
-                    includeBottomSheet.bottomSheetDescription.text = it.pictureOfTheDay.explanation
+                    includeBottomSheet.bottomSheetDescriptionHeader.text = TextSpans().underline(it.pictureOfTheDay.title,requireContext())
+                    includeBottomSheet.bottomSheetDescription.text = TextSpans().makeRainbow(it.pictureOfTheDay.explanation)
                 }
                 setImageScale()
             }

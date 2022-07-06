@@ -13,7 +13,6 @@ import androidx.transition.ChangeBounds
 import androidx.transition.TransitionManager
 import com.google.android.material.tabs.TabLayoutMediator
 import com.homework.nasapicture.R
-import com.homework.nasapicture.databinding.FragmentPotdBinding
 import com.homework.nasapicture.databinding.FragmentPotdStartBinding
 import com.homework.nasapicture.utils.WIKI_URL
 
