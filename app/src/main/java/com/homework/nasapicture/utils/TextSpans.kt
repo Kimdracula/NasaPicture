@@ -1,11 +1,26 @@
 package com.homework.nasapicture.utils
 
+import android.content.Context
 import android.graphics.Color
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
+import android.text.style.TypefaceSpan
+import android.text.style.UnderlineSpan
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.res.ResourcesCompat
+import com.homework.nasapicture.R
 
-class RainbowText {
+class TextSpans:AppCompatActivity() {
+
+    fun underline (string: String, context: Context):SpannableString{
+        val spannable = SpannableString(string)
+        spannable.setSpan(UnderlineSpan(), 0,spannable.length,Spannable.SPAN_EXCLUSIVE_INCLUSIVE )
+        spannable.setSpan(ResourcesCompat.getFont(context, R.font.rubik_mono_one)
+            ?.let { TypefaceSpan(it) },0,spannable.length,Spannable.SPAN_EXCLUSIVE_INCLUSIVE )
+        return spannable
+    }
+
     fun makeRainbow(string: String): SpannableString {
         val spannable = SpannableString(string)
 

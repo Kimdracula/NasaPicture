@@ -14,7 +14,7 @@ import com.homework.nasapicture.R
 import com.homework.nasapicture.databinding.FragmentYesterdayBinding
 import com.homework.nasapicture.utils.Date
 import com.homework.nasapicture.utils.ImageScale
-import com.homework.nasapicture.utils.RainbowText
+import com.homework.nasapicture.utils.TextSpans
 import com.homework.nasapicture.utils.UNKNOWN_ERROR
 import com.homework.nasapicture.viewmodel.POTDState
 import com.homework.nasapicture.viewmodel.MainViewModel
@@ -68,8 +68,8 @@ class YesterdayFragment:Fragment() {
                     if (it.pictureOfTheDay.mediaType == "video")
                     {nasaPictureImageView.load(R.drawable.no_image)}else{
                         nasaPictureImageView.load(it.pictureOfTheDay.url)}
-                       includeBottomSheet.bottomSheetDescriptionHeader.text = it.pictureOfTheDay.title
-                      includeBottomSheet.bottomSheetDescription.text = RainbowText().makeRainbow(it.pictureOfTheDay.explanation)
+                       includeBottomSheet.bottomSheetDescriptionHeader.text = TextSpans().underline(it.pictureOfTheDay.title,requireContext())
+                      includeBottomSheet.bottomSheetDescription.text = TextSpans().makeRainbow(it.pictureOfTheDay.explanation)
                 }
                 setImageScale()
             }
