@@ -93,7 +93,7 @@
                     android:id="@+id/textViewCamera"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/Camera"
+                    tools:text="@string/Camera"
                     android:textSize="@dimen/text_size_mars"
                     app:layout_constraintVertical_chainStyle="packed" />
 
@@ -102,7 +102,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/cardView_textview_margin_top30"
-                    android:text="@string/Launch_date"
+                    tools:text="@string/Launch_date"
                     android:textSize="@dimen/text_size_mars" />
 
                 <TextView
@@ -110,7 +110,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/cardView_textview_margin_top60"
-                    android:text="@string/Landing_date"
+                    tools:text="@string/Landing_date"
                     android:textSize="@dimen/text_size_mars" />
 
             </androidx.cardview.widget.CardView>

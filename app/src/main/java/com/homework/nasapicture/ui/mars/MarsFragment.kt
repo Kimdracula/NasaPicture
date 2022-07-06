@@ -15,6 +15,7 @@ import com.homework.nasapicture.R
 import com.homework.nasapicture.databinding.FragmentMarsBinding
 import com.homework.nasapicture.utils.Date
 import com.homework.nasapicture.utils.ImageScale
+import com.homework.nasapicture.utils.TextSpans
 import com.homework.nasapicture.viewmodel.MarsState
 import com.homework.nasapicture.viewmodel.MarsViewModel
 
@@ -72,18 +73,18 @@ class MarsFragment : Fragment() {
                         marsPictureImageView.load(it.marsRoverPhotos.photos[0].imgSrc)}
 
                     if (it.marsRoverPhotos.photos[0].camera.fullName != null) {
-                        textViewCamera.text =
-                            ("Камера: ${it.marsRoverPhotos.photos[0].camera.fullName}")
+                        textViewCamera.text =TextSpans().setQuote("Камера: ${it.marsRoverPhotos.photos[0].camera.fullName}")
+
                     }
 
                     if (it.marsRoverPhotos.photos[0].rover.launchDate != null) {
                         textViewLaunch.text =
-                            ("Дата запуска: ${it.marsRoverPhotos.photos[0].rover.launchDate}")
+                            TextSpans().setQuote("Дата запуска: ${it.marsRoverPhotos.photos[0].rover.launchDate}")
                     }
 
                     if (it.marsRoverPhotos.photos[0].rover.landingDate != null) {
                         textViewLanding.text =
-                            ("Дата посадки: ${it.marsRoverPhotos.photos[0].rover.landingDate}")
+                            TextSpans().setQuote("Дата посадки: ${it.marsRoverPhotos.photos[0].rover.landingDate}")
                     }
                     setImageScale()
                 }

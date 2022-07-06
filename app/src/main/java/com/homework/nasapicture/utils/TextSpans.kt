@@ -5,13 +5,21 @@ import android.graphics.Color
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
+import android.text.style.QuoteSpan
 import android.text.style.TypefaceSpan
 import android.text.style.UnderlineSpan
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import com.homework.nasapicture.R
 
-class TextSpans:AppCompatActivity() {
+class TextSpans {
+
+    fun setQuote(string: String):SpannableString{
+        val spannable = SpannableString(string)
+        spannable.setSpan(QuoteSpan(Color.YELLOW,
+            20, 40),0,spannable.length,Spannable.SPAN_INCLUSIVE_INCLUSIVE)
+   return spannable
+    }
 
     fun underline (string: String, context: Context):SpannableString{
         val spannable = SpannableString(string)
