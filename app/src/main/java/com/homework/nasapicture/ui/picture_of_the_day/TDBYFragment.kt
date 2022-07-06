@@ -14,6 +14,7 @@ import com.homework.nasapicture.R
 import com.homework.nasapicture.databinding.FragmentTdbyBinding
 import com.homework.nasapicture.utils.Date
 import com.homework.nasapicture.utils.ImageScale
+import com.homework.nasapicture.utils.RainbowText
 import com.homework.nasapicture.utils.UNKNOWN_ERROR
 import com.homework.nasapicture.viewmodel.POTDState
 import com.homework.nasapicture.viewmodel.MainViewModel
@@ -68,7 +69,7 @@ class TDBYFragment:Fragment() {
                     {nasaPictureImageView.load(R.drawable.no_image)}else{
                         nasaPictureImageView.load(it.pictureOfTheDay.url)}
                       includeBottomSheet.bottomSheetDescriptionHeader.text = it.pictureOfTheDay.title
-                      includeBottomSheet.bottomSheetDescription.text = it.pictureOfTheDay.explanation
+                      includeBottomSheet.bottomSheetDescription.text = RainbowText().makeRainbow(it.pictureOfTheDay.explanation)
                 }
                 setImageScale()
             }
