@@ -46,10 +46,12 @@ class SplashFragment : Fragment() {
             .setInterpolator(AccelerateDecelerateInterpolator())
             .setDuration(4000).start()
 
-        binding.comet.animate().translationX(-1720f)
-
-            .translationY(1800f)
+        binding.comet.animate().translationX(-1700f)
+            .translationY(1300f)
+            .scaleX(20f)
+            .scaleY(20f)
             .setStartDelay(5000)
+            .alpha(0f)
             .setInterpolator(AccelerateDecelerateInterpolator())
             .setDuration(5000)
             .setListener(object : Animator.AnimatorListener{
