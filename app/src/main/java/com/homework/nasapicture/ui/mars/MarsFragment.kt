@@ -4,10 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
 import android.widget.ImageView
-import android.widget.LinearLayout
-import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import coil.load
@@ -21,7 +18,7 @@ import com.homework.nasapicture.viewmodel.MarsViewModel
 
 class MarsFragment : Fragment() {
 
-    var isImageClicked: Boolean = false
+    private var isImageClicked: Boolean = false
     private var _binding: FragmentMarsBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: MarsViewModel
@@ -44,7 +41,7 @@ class MarsFragment : Fragment() {
         viewModel.sendRequest(date.formattedYesterday, "spirit")
         with(binding.datePicker){
         updateDate(date.current.year-2, date.current.dayOfMonth+1, date.current.dayOfYear-1)
-        setOnDateChangedListener { datePicker, year, month, day ->
+        setOnDateChangedListener { _, year, month, day ->
             viewModel.sendRequest("$year-${month + 1}-$day", "spirit")
         }}
     }
@@ -73,17 +70,17 @@ class MarsFragment : Fragment() {
 
                     if (it.marsRoverPhotos.photos[0].camera.fullName != null) {
                         textViewCamera.text =
-                            ("Камера: ${it.marsRoverPhotos.photos[0].camera.fullName}")
+                            it.marsRoverPhotos.photos[0].camera.fullName
                     }
 
                     if (it.marsRoverPhotos.photos[0].rover.launchDate != null) {
                         textViewLaunch.text =
-                            ("Дата запуска: ${it.marsRoverPhotos.photos[0].rover.launchDate}")
+                            it.marsRoverPhotos.photos[0].rover.launchDate
                     }
 
                     if (it.marsRoverPhotos.photos[0].rover.landingDate != null) {
                         textViewLanding.text =
-                            ("Дата посадки: ${it.marsRoverPhotos.photos[0].rover.landingDate}")
+                            it.marsRoverPhotos.photos[0].rover.landingDate
                     }
                     setImageScale()
                 }

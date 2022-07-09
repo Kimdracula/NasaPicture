@@ -90,7 +90,7 @@
                 app:contentPaddingTop="@dimen/cardView_content_padding_top">
 
                 <TextView
-                    android:id="@+id/textViewCamera"
+                    android:id="@+id/textViewHeaderCamera"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/Camera"
@@ -98,19 +98,43 @@
                     app:layout_constraintVertical_chainStyle="packed" />
 
                 <TextView
+                    android:id="@+id/textViewCamera"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="ghghhhghghhg"
+                    android:layout_marginTop="20dp"
+                    android:alpha="0.7"
+                    android:textSize="@dimen/text_size_mars" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:text="@string/Launch_date"
+                    android:textSize="@dimen/text_size_mars" />
+
+                <TextView
                     android:id="@+id/textViewLaunch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/cardView_textview_margin_top30"
-                    android:text="@string/Launch_date"
+                    android:layout_marginTop="70dp"
+                    android:alpha="0.7"
+                    tools:text="2022/02/04"
+                    android:textSize="@dimen/text_size_mars" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="90dp"
+                    android:text="@string/Landing_date"
                     android:textSize="@dimen/text_size_mars" />
 
                 <TextView
                     android:id="@+id/textViewLanding"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/cardView_textview_margin_top60"
-                    android:text="@string/Landing_date"
+                    android:layout_marginTop="110dp"
+                    tools:text="@string/Landing_date"
                     android:textSize="@dimen/text_size_mars" />
 
             </androidx.cardview.widget.CardView>

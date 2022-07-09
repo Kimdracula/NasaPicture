@@ -43,6 +43,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_top_after_title"
+                    android:alpha="0.7"
                     tools:text="2020-02-01" />
             </LinearLayout>
 
@@ -70,6 +71,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_top_after_title"
+                        android:alpha="0.7"
                         tools:text="25.126 au" />
                 </LinearLayout>
 
@@ -100,6 +102,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_top_after_title"
+                android:alpha="0.7"
                 tools:text="11.9 km/s" />
 
             <TextView
@@ -113,6 +116,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_top_after_title"
+                android:alpha="0.7"
                 tools:text="0.0924 au" />
 
         </LinearLayout>
