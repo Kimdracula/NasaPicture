@@ -39,27 +39,42 @@ class ApiBottomFragment : Fragment() {
 
                 R.id.action_picture_of_the_day -> {
                     childFragmentManager.beginTransaction()
+                        .setCustomAnimations(
+                            com.google.android.material.R.anim.mtrl_bottom_sheet_slide_in,
+                            com.google.android.material.R.anim.mtrl_bottom_sheet_slide_out)
                         .replace(R.id.containerApi, POTDFragment.newInstance()).commit()
                     true
                 }
                 R.id.action_mars -> {
                     childFragmentManager.beginTransaction()
+                        .setCustomAnimations(
+                            com.google.android.material.R.anim.mtrl_bottom_sheet_slide_in,
+                            com.google.android.material.R.anim.mtrl_bottom_sheet_slide_out)
                         .replace(R.id.containerApi, MarsFragment.newInstance()).commit()
                     true
                 }
                 R.id.action_asteroids -> {
                     childFragmentManager.beginTransaction()
+                        .setCustomAnimations(
+                            com.google.android.material.R.anim.mtrl_bottom_sheet_slide_in,
+                            com.google.android.material.R.anim.mtrl_bottom_sheet_slide_out)
                         .replace(R.id.containerApi, AsteroidsFragment.newInstance()).commit()
                     true
                 }
                 R.id.action_earth -> {
                     childFragmentManager.beginTransaction()
+                        .setCustomAnimations(
+                            com.google.android.material.R.anim.mtrl_bottom_sheet_slide_in,
+                            com.google.android.material.R.anim.mtrl_bottom_sheet_slide_out)
                         .replace(R.id.containerApi, EarthFragment.newInstance()).commit()
                     true
                 }
 
                 R.id.action_settings -> {
                     childFragmentManager.beginTransaction()
+                        .setCustomAnimations(
+                            com.google.android.material.R.anim.mtrl_bottom_sheet_slide_in,
+                            com.google.android.material.R.anim.mtrl_bottom_sheet_slide_out)
                         .replace(R.id.containerApi, SettingsFragment.newInstance()).commit()
                     true
                 }

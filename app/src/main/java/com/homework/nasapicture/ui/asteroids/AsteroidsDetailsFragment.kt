@@ -70,6 +70,7 @@ class AsteroidsDetailsFragment : Fragment() {
                         it.asteroids.closeApproachData[0].missDistance.kilometers
                 }
             }
+            else -> {}
         }
     }
 
